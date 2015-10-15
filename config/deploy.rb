@@ -1,5 +1,5 @@
-server '40.122.204.211', roles: [:web, :app, :db], primary: true
-set :domain, "thinksmart.nuevediez.com"
+server '74.208.90.50', roles: [:web, :app, :db], primary: true
+set :domain, "personalgifter.nuevediez.com"
 set :repo_url,        'git@github.com:0910/personalgifter.git'
 set :application,     'personalgifter'
 set :user,            'root'
