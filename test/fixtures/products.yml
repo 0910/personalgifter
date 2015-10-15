@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  price: 1
+  link: MyString
+  user_id: 
+  store_id: 
+  occasion_id: 
+  relationship_id: 
+  interest_id: 
+
+two:
+  name: MyString
+  description: MyText
+  price: 1
+  link: MyString
+  user_id: 
+  store_id: 
+  occasion_id: 
+  relationship_id: 
+  interest_id: 

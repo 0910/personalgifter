@@ -1,0 +1,69 @@
+!!!
+%html
+	%head
+		%meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
+			%title
+				Personal Gifter
+			= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+			= javascript_include_tag 'application', 'data-turbolinks-track' => true
+			= csrf_meta_tags
+			= yield(:head)
+
+	%body{:class => "#{controller_name} #{action_name}"}
+		.gifter
+			.center
+				.row
+					%p
+						COMPLETA LAS SIGUIENTES OPCIONES PARA QUE PERSONAL GIFTER
+						%br
+						PUEDA SUGERIRTE LAS MEJORES OPCIONES PARA REGALAR.
+				.row
+					%form.form-inline
+						.form-group
+							= select(:email, :status, options_for_select([["Cual es la ocasion?", "1"], ["Aniversario", "2"], ["Despedida", "3"]]))
+						.form-group
+							= select(:email, :status, options_for_select([["Quien es la persona?", "1"], ["Para mi Jefe", "2"], ["Para un amigo", "3"]]))
+							.form-group
+							= select(:email, :status, options_for_select([["Que gustos e intereses tiene?", "1"], ["Arte y Diseño", "2"], ["Comidas y bebidas", "3"]]))
+						= link_to(products_path) do
+							%button.btn.btn-default.btn-lg
+								REGALAR
+			%a.toggle-gifter
+				= icon('times')
+		%nav.navbar.navbar-fixed-top
+			.container
+				.navbar-header
+					%button.navbar-toggle.collapsed
+						%span.sr-only
+							Toogle navigation
+						%span.icon-bar
+						%span.icon-bar
+						%span.icon-bar
+					= link_to(root_path, :class => 'navbar-brand') do
+						= image_tag('logo.png')
+				#navbar.collapse.navbar-collapse.pull-right
+					%ul.nav.navbar-nav
+						%li.active
+							%a Home
+						%li
+							%a About
+						%li
+							%a ¿Cómo Funciona?
+						%li
+							%a Contacto
+						%li
+							%a Registrarme
+						%li
+							%button.btn.btn-default.toggle-gifter Regalar
+		= yield
+		%section.footer
+			.container
+				.col-md-6
+					%a Home
+					%a About
+					%a Como funciona
+					%a Registrarme
+					%a Contacto
+				.col-md-6
+					%button.btn.btn-default.btn-lg.toggle-gifter.pull-right
+						REGALAR
