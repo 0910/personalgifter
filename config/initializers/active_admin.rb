@@ -231,3 +231,9 @@ ActiveAdmin.setup do |config|
   #
   # config.filters = true
 end
+
+module ActiveAdmin
+  class BaseController
+    before_filter{ params.permit! }
+  end
+end

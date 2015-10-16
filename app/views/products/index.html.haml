@@ -6,53 +6,14 @@
 %section
 	.container
 		.row
-			.col-md-3
-				.square{:style => "background-image: url(#{image_path "prod01.jpg"})"}
-					.over
-			.col-md-3
-				.square{:style => "background-image: url(#{image_path "prod02.jpg"})"}
-					.over
-			.col-md-3
-				.square{:style => "background-image: url(#{image_path "prod03.jpg"})"}
-					.over
-			.col-md-3
-				.square{:style => "background-image: url(#{image_path "prod04.jpg"})"}
-					.over
-			.col-md-3
-				.square{:style => "background-image: url(#{image_path "prod05.jpg"})"}
-					.over
-			.col-md-3
-				.square{:style => "background-image: url(#{image_path "prod06.jpg"})"}
-					.over
-			.col-md-3
-				.square{:style => "background-image: url(#{image_path "prod07.jpg"})"}
-					.over
-			.col-md-3
-				.square{:style => "background-image: url(#{image_path "prod08.jpg"})"}
-					.over
-			.col-md-3
-				.square{:style => "background-image: url(#{image_path "prod01.jpg"})"}
-					.over
-			.col-md-3
-				.square{:style => "background-image: url(#{image_path "prod02.jpg"})"}
-					.over
-			.col-md-3
-				.square{:style => "background-image: url(#{image_path "prod03.jpg"})"}
-					.over
-			.col-md-3
-				.square{:style => "background-image: url(#{image_path "prod04.jpg"})"}
-					.over
-			.col-md-3
-				.square{:style => "background-image: url(#{image_path "prod05.jpg"})"}
-					.over
-			.col-md-3
-				.square{:style => "background-image: url(#{image_path "prod06.jpg"})"}
-					.over
-			.col-md-3
-				.square{:style => "background-image: url(#{image_path "prod07.jpg"})"}
-					.over
-			.col-md-3
-				.square{:style => "background-image: url(#{image_path "prod08.jpg"})"}
-					.over
-			
-
+			- @products.each do |product|
+				.col-md-3
+					= link_to(product_path(product)) do
+						- if product.images.empty?
+							.square{:style => "background-image: url(image-not-available.jpg)"}
+								.over
+						- else
+							- product.images.each do |image|
+								- if image.cover == true
+									.square{:style => "background-image: url(#{image.file.url(:large)})"}
+										.over

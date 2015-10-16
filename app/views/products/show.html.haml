@@ -1,0 +1,73 @@
+%section.detail
+	.container
+		.row
+			.col-md-6
+				.row.photos
+					%ul.slider
+						- if @product.images.empty?
+							%li
+								.photo{:style => "background-image: url(image-not-available.jpg)"}
+						- else
+							- @product.images.each do |image|
+								%li
+									.photo{:style => "background-image: url(#{image.file.url(:large)})"}
+			.col-md-6
+				.row
+					.col-md-12
+						%h1
+							#{@product.name}
+				.row
+					.col-md-12
+						%h3
+							Tienda Altamira
+				.row
+					.col-md-12
+						%p
+							#{@product.description}
+				%hr
+				.row
+					.col-md-12
+						.row
+							.col-md-6
+								%h2.pull-right
+									$#{@product.price}
+									%span.line
+							.col-md-6
+								%button.btn.btn-lavander
+									COMPRAR
+				%hr
+%section.recomendations
+	.col-md-12
+		.row.title
+			%h1
+				Otros productos
+			%p
+				relacionados
+		.row
+			.container
+				.row
+					- @products.each do |product|
+						.col-md-3
+							= link_to(product_path(product)) do
+								- if product.images.empty?
+									.square{:style => "background-image: url(image-not-available.jpg)"}
+										.over
+								- else
+									- product.images.each do |image|
+										- if image.cover == true
+											.square{:style => "background-image: url(#{image.file.url(:large)})"}
+												.over
+
+/javascript functions
+
+:javascript
+	$(function() {
+		$('.photos .slider').bxSlider({
+			auto: true,
+			pause: 5000,
+			useCSS:true,
+			easing: 'cubic-bezier(.74,.14,.44,.71)',
+				nextText: '→',
+				prevText: '←'
+		});
+	});
