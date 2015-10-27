@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  interest_id_id: 
+  search_id_id: 
+
+two:
+  interest_id_id: 
+  search_id_id: 

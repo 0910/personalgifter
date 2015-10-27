@@ -17,4 +17,5 @@
 //= require bootstrap
 //= require bxslider
 //= require magic
+//= require select2
 //= require_tree .

@@ -1,11 +1,19 @@
 ready = ->
   toggleGifter = ->
+    $('.gifter select').val('')
     if $('.gifter').hasClass('show')
       # Do things on Nav Close
       $('.gifter').removeClass 'show'
     else
       # Do things on Nav Open
       $('.gifter').addClass 'show'
+    return
+  
+  $(window).on 'scroll', ->
+    if $(this).scrollTop() > 100
+      $('.navbar').addClass 'lavander'
+    else
+      $('.navbar').removeClass 'lavander'
     return
 
   $ ->

@@ -20,9 +20,31 @@ ActiveAdmin.register Product do
       row :price
       row :link
       row :store
-      row :occasion
-      row :relationship
-      row :interest
+      row :genres do 
+        product.genres.collect.each do |g|
+          g.name
+        end
+      end
+      row :targets do 
+        product.targets.collect.each do |t|
+          t.name
+        end
+      end
+      row :occasions do 
+        product.occasions.collect.each do |o|
+          o.name
+        end
+      end
+      row :relationships do 
+        product.relationships.collect.each do |r|
+          r.name
+        end
+      end
+      row :insterests do 
+        product.interests.collect.each do |i|
+          i.name
+        end
+      end
       row :user
       p.images.each do |image|
         row :image do
@@ -36,10 +58,12 @@ ActiveAdmin.register Product do
     f.inputs 'Details' do
       f.semantic_errors
       f.input :name, :require => true
-      #f.input :project_type_id, :as => :select, :collection => ProjectType.all, :include_blank => false, :require => true
-      #f.input :category_id, :as => :select, :collection => Category.all, :include_blank => false, :require => true
-      #f.input :target_id, :as => :select, :collection => Target.all, :include_blank => false, :require => true
-      #f.input :city_id, :as => :select, :collection => City.all, :include_blank => false, :require => true
+      f.input :store_id, :as => :select2, :collection => Store.all, :include_blank => false, :require => true
+      f.input :targets, :as => :select2_multiple, :collection => Target.all, :include_blank => false, :require => true
+      f.input :genres, :as => :select2_multiple, :collection => Genre.all, :include_blank => false, :require => true
+      f.input :occasions, :as => :select2_multiple, :collection => Occasion.all, :include_blank => false, :require => true
+      f.input :relationships, :as => :select2_multiple, :collection => Relationship.all, :include_blank => false, :require => true
+      f.input :interests, :as => :select2_multiple, :collection => Interest.all, :include_blank => false, :require => true
       f.input :description, :require => true
       f.input :price
       f.input :link

@@ -7,7 +7,7 @@
 	.container
 		.row
 			- @products.each do |product|
-				.col-md-3
+				.col-xs-6.col-md-3
 					= link_to(product_path(product)) do
 						- if product.images.empty?
 							.square{:style => "background-image: url(image-not-available.jpg)"}

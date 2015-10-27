@@ -14,20 +14,42 @@
 			.center
 				.row
 					%p
-						COMPLETA LAS SIGUIENTES OPCIONES PARA QUE PERSONAL GIFTER
+						COMPLETÁ LAS SIGUIENTES OPCIONES PARA QUE PERSONAL GIFTER
 						%br
-						PUEDA SUGERIRTE LAS MEJORES OPCIONES PARA REGALAR.
+						PUEDA SUGERIRTE LAS MEJORES SUGERENCIAS PARA REGALAR.
 				.row
-					%form.form-inline
-						.form-group
-							= select(:email, :status, options_for_select([["Cual es la ocasion?", "1"], ["Aniversario", "2"], ["Despedida", "3"]]))
-						.form-group
-							= select(:email, :status, options_for_select([["Quien es la persona?", "1"], ["Para mi Jefe", "2"], ["Para un amigo", "3"]]))
-							.form-group
-							= select(:email, :status, options_for_select([["Que gustos e intereses tiene?", "1"], ["Arte y Diseño", "2"], ["Comidas y bebidas", "3"]]))
-						= link_to(products_path) do
-							%button.btn.btn-default.btn-lg
-								REGALAR
+					= form_for @search do |f|
+						.row.box
+							.col-md-4
+								.row
+									= f.label '¿Cuál es la ocasión?'
+								.row
+									= f.collection_select :occasion_id, Occasion.all, :id, :name, {include_blank: false}
+							.col-md-4
+								.row
+									= f.label '¿Quién es la persona?'
+								.row
+									= f.collection_select :relationship_id, Relationship.all, :id, :name, {include_blank: false}
+							.col-md-2
+								.row
+									= f.label 'Edad'
+								.row
+									= f.collection_select :target_id, Target.all, :id, :name, {include_blank: false}
+							.col-md-2
+								.row
+									= f.label 'Género'
+								.row
+								= f.collection_select :genre_id, Genre.all, :id, :name, {include_blank: false}
+						.row.box
+							.col-md-12
+								.row
+									= f.label '¿Qué gustos e intereses tiene?'
+								.row	
+									= f.collection_select :interest_ids, Interest.all, :id, :name, {include_blank: false}, {:multiple => true}
+						.row.box
+							.col-md-6.col-md-offset-3
+								.row
+									= f.submit "BUSCAR", :class => 'btn-white btn btn-lg'
 			%a.toggle-gifter
 				= icon('times')
 		%nav.navbar.navbar-fixed-top
@@ -44,7 +66,7 @@
 				#navbar.collapse.navbar-collapse.pull-right
 					%ul.nav.navbar-nav
 						%li.active
-							%a Home
+							= link_to('Home', root_path)
 						%li
 							%a ¿Cómo Funciona?
 						%li
@@ -52,7 +74,8 @@
 						%li
 							%button.btn.btn-default.toggle-gifter Registrarme
 						%li
-							%button.btn.btn-white.toggle-gifter REGALAR
+							%button.btn.btn-white.toggle-gifter
+								REGALAR
 		= yield
 		%section.footer
 			.container
@@ -65,3 +88,7 @@
 				.col-md-6
 					%button.btn.btn-default.btn-lg.toggle-gifter.pull-right
 						REGALAR
+		:javascript
+			$('.gifter select').select2({
+				theme: "bootstrap"
+			});

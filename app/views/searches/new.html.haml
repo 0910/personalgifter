@@ -1,0 +1,16 @@
+%section.title
+	.row
+		%p
+			COMPLETA LAS SIGUIENTES OPCIONES PARA QUE PERSONAL GIFTER
+			%br
+			PUEDA SUGERIRTE LAS MEJORES SUGERENCIAS PARA REGALAR.
+%section
+	.gifter	
+		.row
+			= form_for @search do |f|
+				= f.collection_select :occasion_id, Occasion.all, :id, :name, include_blank: false
+				= f.collection_select :relationship_id, Relationship.all, :id, :name, include_blank: false
+				= f.collection_select :target_id, Target.all, :id, :name, include_blank: false
+				= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: false
+				= f.collection_select :interest_ids, Interest.all, :id, :name, {include_blank: false}, {:multiple => true}
+				= f.submit "Buscar", :class => 'search'

@@ -1,7 +1,7 @@
 .splash
 	.center
 		.row
-			= image_tag('splash-img.png')
+			%h1 El regalo perfecto para cada ocasión
 		.row
 			%button.btn.btn-default.btn-lg.toggle-gifter
 				REGALAR
@@ -12,12 +12,13 @@
 		de los usuarios
 %section
 	.container
+		.col-
 		%ul.slider
 			%li.slide
-				.col-md-4
+				.col-sm-4.col-md-4
 					.group{:style => "border-color: #ccc"}
 						.row
-							.col-md-12
+							.col-md-4.col-md-12
 								.ph{:style => "background-image: url(#{image_path "romantic.jpg"})"}
 									.center
 										%h3 ideales para
@@ -34,7 +35,7 @@
 												- if image.cover == true
 													.square{:style => "background-image: url(#{image.file.url(:large)})"}
 														.over
-								.item
+								.item.hidden-md
 									.square
 										%h1
 											42
@@ -43,7 +44,7 @@
 						.row	
 							.col-md-12
 								%a.discover descubrir mas
-				.col-md-4
+				.col-sm-4.col-md-4
 					.group{:style => "border-color: #ccc"}
 						.row
 							.col-md-12
@@ -63,7 +64,7 @@
 												- if image.cover == true
 													.square{:style => "background-image: url(#{image.file.url(:large)})"}
 														.over
-								.item
+								.item.hidden-md
 									.square
 										%h1
 											36
@@ -72,7 +73,7 @@
 						.row	
 							.col-md-12
 								%a.discover descubrir mas
-				.col-md-4
+				.col-sm-4.col-md-4
 					.group{:style => "border-color: #ccc"}
 						.row
 							.col-md-12
@@ -92,7 +93,7 @@
 												- if image.cover == true
 													.square{:style => "background-image: url(#{image.file.url(:large)})"}
 														.over
-								.item	
+								.item.hidden-md
 									.square
 										%h1
 											54

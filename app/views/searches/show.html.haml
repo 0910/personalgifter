@@ -1,0 +1,22 @@
+%section.title
+	%h1
+		Resultado de la busqueda
+	%p
+		Las recomendaciones de PG
+%section
+	.container
+		.row
+			- if @search.search_products.empty?
+				%p No Records Found
+			- else
+				- @search.search_products.each do |c|
+					.col-xs-6.col-md-3
+						= link_to(product_path(c.id)) do
+							- if c.images.empty?
+								.square{:style => "background-image: url(image-not-available.jpg)"}
+									.over
+							- else
+								- c.images.each do |image|
+									- if image.cover == true
+										.square{:style => "background-image: url(#{image.file.url(:large)})"}
+											.over

@@ -2,6 +2,9 @@
 	.footer{
 		margin-top: 0px;
 	}
+	.navbar.lavander{
+		background-color: #2c2a52;
+	}
 }
 .splash{
 	position:relative;
@@ -13,7 +16,7 @@
 	h1{
 		color:#fff;
 		font-weight: 200;
-		font-size: 3.750em;
+		font-size: 3em;
 		letter-spacing:-0.038em;
 	}
 	h1 span{
@@ -31,6 +34,18 @@
 	    margin-top: 1.5em;
 	    padding: 0.75em 3em;
 	    border-width: 2px;
+	    background-color: transparent;
+    	border-color: #fff;
+    	color: #fff;
+    	border-radius: 6px;
+		line-height: 1.33333;
 	}
 
+}
+@media (min-width: 768px){
+	.splash{
+		h1{
+			font-size: 5em;
+		}
+	}
 }

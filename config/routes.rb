@@ -7,6 +7,14 @@ Rails.application.routes.draw do
 
   resources :products, only: [:show, :index] do
   end
+  resources :occasions, only: [:show, :index] do
+  end
+  resources :interests, only: [:show, :index] do
+  end
+  resources :relationships, only: [:show, :index] do
+  end
+
+  resources :searches
 
   root to: "home#index"
   
