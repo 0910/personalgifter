@@ -1,13 +1,31 @@
 ready = ->
+  
+  toggleAbout = ->
+    if $('.about').hasClass('show')
+      # Do things on Nav Close
+      $('.about').removeClass 'show'
+      $('body').css('overflow', 'auto')
+    else
+      # Do things on Nav Open
+      $('.about').addClass 'show'
+      $('body').css('overflow', 'hidden')
+    return
+
   toggleGifter = ->
     $('.gifter select').val('')
     if $('.gifter').hasClass('show')
       # Do things on Nav Close
       $('.gifter').removeClass 'show'
+      $('body').css('overflow', 'auto')
     else
       # Do things on Nav Open
       $('.gifter').addClass 'show'
+      $('body').css('overflow', 'hidden')
     return
+
+  
+
+  $('.dropdown-toggle').dropdown()
   
   $(window).on 'scroll', ->
     if $(this).scrollTop() > 100
@@ -18,6 +36,12 @@ ready = ->
 
   $ ->
 
+    $('.toggle-about').click (event) ->
+      # Calling a function in case you want to expand upon this.
+      event.preventDefault()
+      toggleAbout()
+      return
+      
     # Toggle Nav on Click
     $('.toggle-gifter').click (event) ->
       # Calling a function in case you want to expand upon this.
@@ -25,5 +49,8 @@ ready = ->
       toggleGifter()
       return
     return
+
+    
+
 $(document).ready(ready);
 $(document).on('page:load', ready);

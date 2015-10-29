@@ -10,6 +10,24 @@
 			= yield(:head)
 
 	%body{:class => "#{controller_name} #{action_name}"}
+		.about
+			.center
+				.row.steps
+					.col-md-4
+						%h1 1 . BUSCA
+						= icon('search')
+						%p INDÍCANOS PARA QUE OCASIÓN BUSCAS EL REGALO, QUE RELACIÓN TIENES CON LA PERSONA Y SUS GUSTOS E INTERESES.
+					.col-md-4
+						%h1 2 . ENCUENTRA
+						= icon('tags')
+						%p PERSONAL GIFTER TE OFRECERÁ SUGERENCIAS DE PRODUCTOS ACORDES A TU BUSQEUDA.
+
+					.col-md-4
+						%h1 3 . REGALA
+						= icon('gift')
+						%p REALIZA LA COMPRA EN LA TIENDA Y OBTEN EL REGALO PERFECTO.
+			%a.toggle-about
+				= icon('times')
 		.gifter
 			.center
 				.row
@@ -68,11 +86,22 @@
 						%li.active
 							= link_to('Home', root_path)
 						%li
-							%a ¿Cómo Funciona?
+							%a.toggle-about(href='#') ¿Cómo Funciona?
 						%li
 							%a Contacto
 						%li
-							%button.btn.btn-default.toggle-gifter Registrarme
+							- if current_user
+								.dropdown
+									%button.dropdown-toggle.btn.btn-default{"aria-expanded" => "true", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+										#{current_user.name}
+										%span.caret
+									%ul.dropdown-menu
+										%li
+											= link_to('Salir', signout_path)
+										%li
+											= link_to('Editar Perfil', edit_user_path(current_user))
+							- else
+								= link_to "Ingresar con Facebook", user_omniauth_authorize_path(:facebook), class: "btn btn-default"
 						%li
 							%button.btn.btn-white.toggle-gifter
 								REGALAR
@@ -81,9 +110,8 @@
 			.container
 				.col-md-6
 					%a Home
-					%a About
+					%a.toggle-about About
 					%a Como funciona
-					%a Registrarme
 					%a Contacto
 				.col-md-6
 					%button.btn.btn-default.btn-lg.toggle-gifter.pull-right
@@ -92,3 +120,4 @@
 			$('.gifter select').select2({
 				theme: "bootstrap"
 			});
+			$('.dropdown-toggle').dropdown();

@@ -1,0 +1,31 @@
+%section.title
+	.profilepic{:style => "background-image: url(#{@user.image})"}
+	%h1
+		#{@user.name}
+	%p
+		Palermo, Buenos
+%section.detail
+	.container
+		.row						
+			.col-md-6.col-md-offset-3
+				%hr
+				.row
+					.col-md-12
+						= form_for @user do |f|
+							.row
+								= f.label 'Seleccioná las descripciones que te identifiquen'
+							.row
+								= f.collection_select :interest_ids, Interest.all, :id, :name, {include_blank: false}, {:multiple => true}
+							%hr
+							.row
+								= f.submit "GUARDAR PERFIL", :class => 'btn btn-success'
+
+
+/javascript functions
+
+:javascript
+	$(function() {
+		$('select').select2({
+			theme: "bootstrap"
+		});
+	});

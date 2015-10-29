@@ -38,6 +38,7 @@ gem 'country_select'
 gem 'select2-rails'
 gem 'activeadmin-select2', github: 'mfairburn/activeadmin-select2'
 gem 'activesupport-json_encoder'
+gem 'omniauth-facebook'
 
 
 group :development do

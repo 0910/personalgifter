@@ -25,7 +25,7 @@
 										%h2 Romanticos
 						.row
 							.col-md-12
-								- @grouped.each do |item|
+								- @romantic.each do |item|
 									= link_to(product_path(item), class: 'item') do
 										- if item.images.empty?
 											.square{:style => "background-image: url(image-not-available.jpg)"}
@@ -48,13 +48,13 @@
 					.group{:style => "border-color: #ccc"}
 						.row
 							.col-md-12
-								.ph{:style => "background-image: url(#{image_path "oca02.jpg"})"}
+								.ph{:style => "background-image: url(#{image_path "athletic.jpg"})"}
 									.center
 										%h3 ideales para
-										%h2 Cumpleaños
+										%h2 vida saludable y aire libre
 						.row
 							.col-md-12
-								- @grouped.each do |item|
+								- @athletic.each do |item|
 									= link_to(product_path(item), class: 'item') do
 										- if item.images.empty?
 											.square{:style => "background-image: url(image-not-available.jpg)"}
@@ -77,13 +77,13 @@
 					.group{:style => "border-color: #ccc"}
 						.row
 							.col-md-12
-								.ph{:style => "background-image: url(#{image_path "oca03.jpg"})"}
+								.ph{:style => "background-image: url(#{image_path "elegant.jpg"})"}
 									.center
 										%h3 ideales para
-										%h2 Niños
+										%h2 elegantes y refinados
 						.row
 							.col-md-12
-								- @grouped.each do |item|
+								- @elegant.each do |item|
 									= link_to(product_path(item), class: 'item') do
 										- if item.images.empty?
 											.square{:style => "background-image: url(image-not-available.jpg)"}
@@ -132,15 +132,27 @@
 							.group{:style => "border-color: #ccc"}
 								.row
 									.col-md-12
-										.photo{:style => "background-image: url(#{image_path "prod05.jpg"})"}
-										.photo{:style => "background-image: url(#{image_path "prod06.jpg"})"}
-										.photo{:style => "background-image: url(#{image_path "prod07.jpg"})"}
-										.photo{:style => "background-image: url(#{image_path "prod08.jpg"})"}
+										- @recomendations.each do |recomendation|
+											= link_to(product_path(recomendation)) do
+												- if recomendation.images.empty?
+													.photo{:style => "background-image: url(image-not-available.jpg)"}
+														.over
+												- else
+													- recomendation.images.each do |image|
+														- if image.cover == true
+															.photo{:style => "background-image: url(#{image.file.url(:large)})"}
+																.over
 						.col-md-4
 							.group{:style => "border-color: #ccc"}
 								.row
 									.col-md-12
-										.photo{:style => "background-image: url(#{image_path "prod01.jpg"})"}
-										.photo{:style => "background-image: url(#{image_path "prod02.jpg"})"}
-										.photo{:style => "background-image: url(#{image_path "prod03.jpg"})"}
-										.photo{:style => "background-image: url(#{image_path "prod04.jpg"})"}
+										- @recomendations.each do |recomendation|
+											= link_to(product_path(recomendation)) do
+												- if recomendation.images.empty?
+													.photo{:style => "background-image: url(image-not-available.jpg)"}
+														.over
+												- else
+													- recomendation.images.each do |image|
+														- if image.cover == true
+															.photo{:style => "background-image: url(#{image.file.url(:large)})"}
+																.over

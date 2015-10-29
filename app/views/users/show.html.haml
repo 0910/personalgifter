@@ -1,0 +1,39 @@
+%section.title
+	.profilepic{:style => "background-image: url(#{@user.image})"}
+	%h1
+		#{@user.name}
+	%p
+		Palermo, Buenos
+%section.detail
+	.container
+		.row						
+			.col-md-6.col-md-offset-3
+				%hr
+				.row
+					.col-md-12
+						%p
+							- @user.interests.each do |interest|
+								%p
+									#{interest.name}
+				%hr
+				.row
+					.col-md-12
+						.row
+							.col-md-12
+								%button.btn.btn-lg.btn-lavander
+									Hacer un regalo a #{@user.name}
+
+
+/javascript functions
+
+:javascript
+	$(function() {
+		$('.photos .slider').bxSlider({
+			auto: true,
+			pause: 5000,
+			useCSS:true,
+			easing: 'cubic-bezier(.74,.14,.44,.71)',
+				nextText: '→',
+				prevText: '←'
+		});
+	});
