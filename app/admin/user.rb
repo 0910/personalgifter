@@ -26,6 +26,9 @@ ActiveAdmin.register User do
     f.inputs "Admin Details" do
       f.input :email
       f.input :name
+      f.input :location
+      f.input :genre
+      f.input :target
       f.input :role, :as => :select2, :collection => ['admin', 'gifter'], :include_blank => false, :require => true
       f.input :interests, :as => :select2_multiple, :collection => Interest.all, :include_blank => false, :require => true
     end

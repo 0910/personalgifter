@@ -23,6 +23,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit({:interest_ids => []})
+    params.require(:user).permit(:genre_id, :target_id, {:interest_ids => []})
   end
 end

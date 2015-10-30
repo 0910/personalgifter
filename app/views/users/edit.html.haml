@@ -3,7 +3,7 @@
 	%h1
 		#{@user.name}
 	%p
-		Palermo, Buenos
+		de #{@user.location}
 %section.detail
 	.container
 		.row						
@@ -13,6 +13,21 @@
 					.col-md-12
 						= form_for @user do |f|
 							.row
+								.col-md-6
+									.row
+										.col-md-12
+											= f.label 'Genero'
+									.row
+										.col-md-12
+											= f.collection_select :genre_id, Genre.all, :id, :name, {include_blank: false}
+								.col-md-6
+									.row
+										.col-md-12
+											= f.label 'Edad'
+									.row
+										.col-md-12
+											= f.collection_select :target_id, Target.all, :id, :name, {include_blank: false}
+							.row(style='margin-top:30px;')
 								= f.label 'Seleccioná las descripciones que te identifiquen'
 							.row
 								= f.collection_select :interest_ids, Interest.all, :id, :name, {include_blank: false}, {:multiple => true}
