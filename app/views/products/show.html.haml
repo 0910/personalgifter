@@ -1,7 +1,7 @@
 %section.detail
 	.container
 		.row
-			.col-md-6
+			.col-sm-6.col-md-6
 				.row.photos
 					%ul.slider
 						- if @product.images.empty?
@@ -11,7 +11,7 @@
 							- @product.images.each do |image|
 								%li
 									.photo{:style => "background-image: url(#{image.file.url(:large)})"}
-			.col-md-6
+			.col-sm-6.col-md-6
 				.row
 					.col-md-12
 						%h1
@@ -19,7 +19,7 @@
 				.row
 					.col-md-12
 						%h3
-							Tienda Altamira
+							#{@product.store.name}
 				.row
 					.col-md-12
 						%p
@@ -28,13 +28,14 @@
 				.row
 					.col-md-12
 						.row
-							.col-md-6
+							.col-sm-6.col-md-6
 								%h2.pull-right
 									$#{@product.price}
 									%span.line
-							.col-md-6
-								%button.btn.btn-lavander
-									COMPRAR
+							.col-sm-6.col-md-6
+								= link_to('COMPRAR', @product.link, class: 'btn btn-lavander btn-buy')
+
+									
 				%hr
 %section.recomendations
 	.col-md-12
@@ -47,7 +48,7 @@
 			.container
 				.row
 					- @products.each do |product|
-						.col-md-3
+						.col-sm-3.col-md-3
 							= link_to(product_path(product)) do
 								- if product.images.empty?
 									.square{:style => "background-image: url(image-not-available.jpg)"}

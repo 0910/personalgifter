@@ -1,0 +1,49 @@
+@media (min-width: 768px){
+	.container{
+		width: 100%;
+	}
+	body{
+		font-size: 10px;
+	}
+	.splash{
+		height: 640px;
+	}
+	.group .item:nth-child(2){
+		margin-left: 15px;
+	}
+	.products.show{
+		.detail{
+			.photos{
+				.slider{
+					.photo{
+						height: 370px;
+					}
+				}
+			}
+		}
+	}
+	.searches .square, .products .square{
+		height: 156px;
+	}
+}
+@media (min-width: 1200px){
+	body{
+		font-size: 12px;
+	}
+	.splash{
+		height: 80vh;
+	}
+	.container{
+		width: 1030px;
+	}
+	.navbar-brand{
+		padding:30px 0;
+		margin: 00px;
+		img{
+			width: 100%;
+		}
+	}
+	.group .item:nth-child(2){
+		margin-left: 7.5px;
+	}
+}
