@@ -14,16 +14,11 @@ section{
 
 /* Gifter */
 
-.gifter, .about{
-	background-color: rgba(44,42,82,0.99);
-	width: 100%;
-	height: 100%;
-	overflow: hidden;
-	position: absolute;
-	opacity: 0;
-	-webkit-transition: 300ms ease all;
-    transition: 300ms ease all;
-    z-index: -2;
+.gifter, .home-gifter{
+	text-align: left;
+	.ms-choice > span.placeholder {
+	    color: #fff;
+	}
     a{
     	color: #fff;
     	-webkit-transition: 500ms ease all;
@@ -49,7 +44,7 @@ section{
 	    	margin: 20px 0;
 	    }
     }
-    a.toggle-gifter, a.toggle-about{
+    a.toggle-gifter{
 		cursor: pointer;
 	    font-size: 2em;
 	    position: absolute;
@@ -63,45 +58,29 @@ section{
 		font-size: 1.666em;
 		margin-bottom: 15px;
     }
-    select{
+    select, button{
     	background-color: transparent;
-    	border:1px solid #fff;
-    	border-radius: 5px;
+    	border:2px solid #fff;
+    	border-radius: 7px;
     	color: #fff;
-    	font-size: 18px;
+    	font-size: 16px;
     	padding: 15px 30px 15px 15px;
     }
-    button{
-    	background-color: #fff;
-    	color: #2c2a52;
-    	font-size: 18px;
-    	font-weight: 400;
-    	letter-spacing: -0.05em;
-    	padding: 15px 30px;
-    	border-radius: 7.5px;
-    }
-}
-.gifter.show, .about.show{
-	opacity: 1;
-	z-index: 1031;
-	label {
-	    color: #fff;
-	    display: inline-block;
-	    font-size: 14px;
-	    font-weight: normal;
-	    margin-bottom: 5px;
-	    max-width: 100%;
-	    text-transform: uppercase;
+    .search-gift-box{
+    	margin: 2px;
+	    .search-gift{
+	    	margin: 0px;
+	    	width: 100%;
+	    	height: 50px;
+	    }
 	}
-	.box{
-		margin-top: 20px;
-	}
-}
-.gifter{
 	.select2-container--bootstrap .select2-selection--single {
 	    height: auto;
 	    line-height: 1.42857;
-	    padding: 13px 24px 17px 12px;
+	    padding: 0 10px;
+	    height: 50px;
+	    line-height: 44px;
+	    vertical-align: middle;
 	}
 	.select2-container{
 		float: left;
@@ -111,15 +90,16 @@ section{
 	}
 	.select2-container--bootstrap .select2-selection {
 	    background-color: transparent;
-	    border: 1px solid #fff;
-	    border-radius: 4px;
+	    border: 2px solid #fff;
+	    border-radius: 7px;
 	    box-shadow: none;
 	    color: #fff;
 	    font-family: "Maven Pro";
-	    font-size: 18px;
+	    font-size: 16px;
 	    outline: 0 none;
 	    text-align: left;
 	    margin-bottom: 5px;
+	    text-transform: uppercase;
 	}
 	.select2-container--bootstrap .select2-selection--single .select2-selection__rendered {
 	    color: #fff;
@@ -130,6 +110,19 @@ section{
 	}
 	.select2-container--bootstrap.select2-container--open .select2-selection .select2-selection__arrow b {
 	    border-color: transparent transparent #fff;
+	}
+	.select2-container--bootstrap.select2-container--open.select2-container--below .select2-selection{
+		border-bottom-color: #fff;
+    	border-bottom-left-radius: 7px;
+    	border-bottom-right-radius: 7px;
+	}
+	.select2-container--bootstrap .select2-selection--single .select2-selection__placeholder{
+		color: #fff;
+	}
+	.select2-container--open .select2-dropdown--below {
+	    border-top: medium none;
+	    border-top-left-radius: 7px;
+	    border-top-right-radius: 7px;
 	}
 }
 .select2-container{
@@ -148,11 +141,103 @@ section{
     font-size: 14px;
     outline: 0 none;
 }
+.gifter{
+	background-color: rgba(44,42,82,0.99);
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	position: absolute;
+	opacity: 0;
+	-webkit-transition: 300ms ease all;
+    transition: 300ms ease all;
+    z-index: -2;
+}
+.gifter.show{
+	opacity: 1;
+	z-index: 1031;
+	label {
+	    color: #fff;
+	    display: inline-block;
+	    font-size: 14px;
+	    font-weight: normal;
+	    margin-bottom: 5px;
+	    max-width: 100%;
+	    text-transform: uppercase;
+	}
+	.box{
+		text-align: left;
+	}
+}
+
+/* About */
+
+.about{
+	background-color: rgba(44,42,82,0.99);
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	position: absolute;
+	opacity: 0;
+	-webkit-transition: 300ms ease all;
+    transition: 300ms ease all;
+    z-index: -2;
+    .steps{
+    	h1{
+    		color: #fff;
+    		margin: 0;
+    		font-size: 2.25em;
+    	}
+    	h2{
+    		color: #fff;
+    		margin: 0;
+    		font-size: 2em;
+    	}
+    	p{
+    		font-size: 1.333em;
+    		color: #fff;
+    	}
+    	.fa{
+	    	color: #fff;
+	    	font-size: 80px;
+	    	margin: 20px 0;
+	    }
+    }
+    a.toggle-about{
+		cursor: pointer;
+	    font-size: 2em;
+	    position: absolute;
+	    right: 30px;
+	    text-align: right;
+	    top: 20px;
+	    width: auto;
+	    color: #fff;
+	}
+}
+.about.show{
+	opacity: 1;
+	z-index: 1031;
+	label {
+	    color: #fff;
+	    display: inline-block;
+	    font-size: 14px;
+	    font-weight: normal;
+	    margin-bottom: 5px;
+	    max-width: 100%;
+	    text-transform: uppercase;
+	}
+	.box{
+		text-align: left;
+	}
+}
+
 /* Nav */
 
 .navbar{
 	-webkit-transition: 300ms ease all;
     transition: 300ms ease all;
+    .container{
+    	width: 95%;
+    }
 }
 .navbar-header{
 	width: 25%;
@@ -161,7 +246,7 @@ section{
 	margin: 10px;
 	padding: 20px 0px;
 	img{
-		width: 100%;
+		width: 85%;
 	}
 }
 .navbar-nav{
@@ -226,6 +311,17 @@ section{
 		font-weight: 400;
 	}
 }
+.title.search-error{
+	h1{
+		font-size: 1.75em;
+		margin-bottom: 1em;
+	}	
+	p{
+		text-align: left;
+		font-size: 1.5em;
+		margin-top: .5em;
+	}
+}
 .center{
 	position: absolute;
 	top: 50%;
@@ -252,6 +348,25 @@ ul.slider{
 
 	}
 }
+.modal-header{
+	h3{
+		color: #909090;
+		margin: 5px 0;
+	}
+}
+.modal.fade .modal-dialog {
+	top: 50%;
+    transform: translate(0px, -25%);
+    -webkit-transform: translate(0px, -50%);
+    -ms-transform: translate(0px, -50%);
+    transition: transform 0.3s ease-out 0s;
+}
+.modal.in .modal-dialog {
+	top: 50%;
+    -webkit-transform: translate(0px, -50%);
+    -ms-transform: translate(0px, -50%);
+    transform: translate(0px, -50%);
+}
 
 /* Buttons */
 
@@ -277,16 +392,7 @@ ul.slider{
     border-color: #fff;
     color: #2c2a52;
 }
-.btn-success {
-    background-color: transparent;
-    border-color: #5cb85c;
-    color: #5cb85c;
-}
-.btn-success:hover {
-    background-color: #5cb85c;
-    border-color: #5cb85c;
-    color: #fff;
-}
+
 
 .btn-lavander {
     background-color: #fff;
@@ -306,7 +412,7 @@ ul.slider{
 .btn-white {
     background-color: #fff;
     border-color: #fff;
-    color: #2c2a52;
+    color: #999;
     padding: 5px 15px;
     margin: 7.5px 0 7.5px 15px;
     line-height: 1.4;

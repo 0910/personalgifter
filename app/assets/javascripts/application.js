@@ -14,8 +14,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
-//= require bootstrap
 //= require bxslider
 //= require magic
 //= require select2
+//= require jquery.multiple.select
 //= require_tree .

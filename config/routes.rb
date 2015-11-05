@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get 'stores/index'
 
   get 'stores/show'
@@ -15,17 +16,19 @@ Rails.application.routes.draw do
   end
 
   resources :searches
-  resources :users
 
   root to: "home#index"
-  
-  devise_config = ActiveAdmin::Devise.config
-  devise_config[:controllers][:omniauth_callbacks] = 'users/omniauth_callbacks'
-  devise_for :users, devise_config
+
+  #devise_for :gifters
+  devise_for :gifters, controllers: {
+    omniauth_callbacks: 'gifters/omniauth_callbacks'
+  }
+  devise_for :users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  devise_scope :user do
-    get '/signout', to: 'devise/sessions#destroy', via: 'delete'
-  end
+
+  #devise_scope :user do
+  #  get '/signout', to: 'devise/sessions#destroy', via: 'delete'
+  #end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

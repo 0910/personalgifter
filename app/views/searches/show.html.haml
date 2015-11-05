@@ -1,24 +1,38 @@
-%section.title
-	%h1
-		Resultado de la busqueda
-	%p
-		Las recomendaciones de PG
-%section
-	.container
-		.row
-			- if @search.search_products.empty?
-				%h3.redefine
-					%a.toggle-gifter(href='#') Redefiní tu busqueda
-					para encontar el regalo perfecto.
-			- else
-				- @search.search_products.each do |c|
-					.col-xs-6.col-sm-4.col-md-3
-						= link_to(product_path(c.id)) do
-							- if c.images.empty?
-								.square{:style => "background-image: url(image-not-available.jpg)"}
-									.over
-							- else
-								- c.images.each do |image|
-									- if image.cover == true
-										.square{:style => "background-image: url(#{image.file.url(:large)})"}
-											.over
+- if @search.search_products.empty?		
+	%section.title.search-error.col-md-6.col-md-offset-3
+		%h1
+			No hay opciones de regalos que coincidan con tu búsqueda
+		%p
+			— Revisa o complementa los criterios de gustos e intereses de la persona a regalar.
+		%p
+			— Utiliza una búsqueda más genérica.
+		%p
+			— Navega por la sección de recomendaciones de los usuarios para encontrar ideas de productos que puedan inspirarte.
+
+
+- else
+	%section.title
+		%h1
+			Resultado de la busqueda
+		%p
+			Las recomendaciones de PG
+	%section
+		.container
+			.row
+				- if @search.search_products.empty?
+					%h3.redefine
+						%a.toggle-gifter(href='#') Redefiní tu busqueda
+						para encontar el regalo perfecto.
+				- else
+					- @search.search_products.each do |c|
+						.col-xs-6.col-sm-4.col-md-3
+							= link_to(product_path(c.id)) do
+								- if c.images.empty?
+									.square{:style => "background-image: url(image-not-available.jpg)"}
+										.over
+								- else
+									- c.images.each do |image|
+										- if image.cover == true
+											.square{:style => "background-image: url(#{image.file.url(:large)})"}
+												.over
+

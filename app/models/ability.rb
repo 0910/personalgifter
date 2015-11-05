@@ -3,15 +3,16 @@ class Ability
 
   def initialize(user)
     can :read, ActiveAdmin::Page, :name => "Dashboard"
-    if user.admin?
-      can :manage, :all
-    else 
-      if user.gifter?
-        cannot :manage, :all
-      else
+    can :manage, :all
+    #if user.admin?
+    #  can :manage, :all
+    #else 
+    #  if user.gifter?
+    #    cannot :manage, :all
+    #  else
         #
-      end
-    end
+    #  end
+    #end
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)

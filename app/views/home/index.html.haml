@@ -1,10 +1,35 @@
 .splash
 	.center
-		.row
-			%h1 El regalo perfecto para cada ocasión
-		.row
-			%button.btn.btn-default.btn-lg.toggle-gifter
-				REGALAR
+		.col-md-12
+			.row
+				%h1 El regalo perfecto para cada ocasión
+				%p
+					Completa las siguientes opciones para que Personal Gifter pueda sugerirte un regalo adecuado.
+			.row.home-gifter
+				= form_for @search do |f|
+					.col-md-12
+						.row.box
+							.col-md-3.simple-select.occasion-select
+								.row
+									= f.collection_select :occasion_id, Occasion.all, :id, :name, {include_blank: true}
+							.col-md-4.simple-select.relationship-select
+								.row
+									= f.collection_select :relationship_id, Relationship.all, :id, :name, {include_blank: true}
+							.col-md-3.simple-select.target-select
+								.row
+									= f.collection_select :target_id, Target.all, :id, :name, {include_blank: true}
+							.col-md-2.simple-select.genre-select
+								.row
+									= f.collection_select :genre_id, Genre.all, :id, :name, {include_blank: true}
+						.row.box
+						
+							.col-md-10.interests-select
+								.row	
+									= f.collection_select :interest_ids, Interest.all, :id, :name, {include_blank: false}, {:multiple => true}
+							.col-md-2
+								.row
+									.search-gift-box
+										= f.submit "BUSCAR", :class => 'btn-white btn btn-lg search-gift'
 %section.title
 	%h1
 		Los Elegidos

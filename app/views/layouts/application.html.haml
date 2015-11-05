@@ -10,64 +10,58 @@
 			= yield(:head)
 
 	%body{:class => "#{controller_name} #{action_name}"}
+		= render 'shared/sign_up_modal'
+		= render 'shared/login_modal'
+		.gifter
+			.center
+				.col-md-12
+					.row
+						%p
+							Completa las siguientes opciones para que Personal Gifter pueda sugerirte un regalo adecuado.
+					.row
+						= form_for @search do |f|
+							.col-md-12
+								.row.box
+									.col-md-3.simple-select.occasion-select
+										.row
+											= f.collection_select :occasion_id, Occasion.all, :id, :name, {include_blank: true}
+									.col-md-4.simple-select.relationship-select
+										.row
+											= f.collection_select :relationship_id, Relationship.all, :id, :name, {include_blank: true}
+									.col-md-3.simple-select.target-select
+										.row
+											= f.collection_select :target_id, Target.all, :id, :name, {include_blank: true}
+									.col-md-2.simple-select.genre-select
+										.row
+											= f.collection_select :genre_id, Genre.all, :id, :name, {include_blank: true}
+								.row.box
+								
+									.col-md-10.interests-select
+										.row	
+											= f.collection_select :interest_ids, Interest.all, :id, :name, {include_blank: false}, {:multiple => true}
+									.col-md-2
+										.row
+											.search-gift-box
+												= f.submit "BUSCAR", :class => 'btn-white btn btn-lg search-gift'
 		.about
 			.center
 				.row.steps
 					.col-md-4
 						%h1 1 . BUSCA
 						= icon('search')
-						%p INDÍCANOS PARA QUE OCASIÓN BUSCAS EL REGALO, QUE RELACIÓN TIENES CON LA PERSONA Y SUS GUSTOS E INTERESES.
+						%p Indicanos ocasión, relación con la persona a regalar y sus gustos e intereses
 					.col-md-4
 						%h1 2 . ENCUENTRA
 						= icon('tags')
-						%p PERSONAL GIFTER TE OFRECERÁ SUGERENCIAS DE PRODUCTOS ACORDES A TU BUSQEUDA.
+						%p Te ofrecemos diversas opciones para regalar
 
 					.col-md-4
 						%h1 3 . REGALA
 						= icon('gift')
-						%p REALIZA LA COMPRA EN LA TIENDA Y OBTEN EL REGALO PERFECTO.
+						%p Realiza la compra en la tienda y sorprende!
 			%a.toggle-about
 				= icon('times')
-		.gifter
-			.center
-				.row
-					%p
-						COMPLETÁ LAS SIGUIENTES OPCIONES PARA QUE PERSONAL GIFTER
-						%br
-						PUEDA SUGERIRTE LAS MEJORES SUGERENCIAS PARA REGALAR.
-				.row
-					= form_for @search do |f|
-						.row.box
-							.col-md-4
-								.row
-									= f.label '¿Cuál es la ocasión?'
-								.row
-									= f.collection_select :occasion_id, Occasion.all, :id, :name, {include_blank: false}
-							.col-md-4
-								.row
-									= f.label '¿Quién es la persona?'
-								.row
-									= f.collection_select :relationship_id, Relationship.all, :id, :name, {include_blank: false}
-							.col-md-2
-								.row
-									= f.label 'Edad'
-								.row
-									= f.collection_select :target_id, Target.all, :id, :name, {include_blank: false}
-							.col-md-2
-								.row
-									= f.label 'Género'
-								.row
-								= f.collection_select :genre_id, Genre.all, :id, :name, {include_blank: false}
-						.row.box
-							.col-md-12
-								.row
-									= f.label '¿Qué gustos e intereses tiene?'
-								.row	
-									= f.collection_select :interest_ids, Interest.all, :id, :name, {include_blank: false}, {:multiple => true}
-						.row.box
-							.col-md-6.col-md-offset-3
-								.row
-									= f.submit "BUSCAR", :class => 'btn-white btn btn-lg'
+		
 			%a.toggle-gifter
 				= icon('times')
 		%nav.navbar.navbar-fixed-top
@@ -90,18 +84,18 @@
 						%li
 							%a Contacto
 						%li
-							- if current_user
+							- if gifter_signed_in?
 								.dropdown
 									%button.dropdown-toggle.btn.btn-default{"aria-expanded" => "true", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
-										#{current_user.name}
+										#{current_gifter.name}
 										%span.caret
 									%ul.dropdown-menu
 										%li
-											= link_to('Salir', signout_path)
+											= link_to('Editar Perfil', edit_gifter_registration_path)
 										%li
-											= link_to('Editar Perfil', edit_user_path(current_user))
+											= link_to('Cerrar Sesion', destroy_gifter_session_path, method: :delete)
 							- else
-								= link_to "Ingresar con Facebook", user_omniauth_authorize_path(:facebook), class: "btn btn-default"
+								= link_to "Iniciar Sesión", "#login", "data-toggle" => "modal", :class => 'btn btn-default'
 						%li
 							%button.btn.btn-white.toggle-gifter
 								REGALAR
@@ -117,7 +111,25 @@
 					%button.btn.btn-default.btn-lg.toggle-gifter.pull-right
 						REGALAR
 		:javascript
-			$('.gifter select').select2({
-				theme: "bootstrap"
+			$('.occasion-select select').select2({
+				theme: "bootstrap",
+				allowClear: true,
+				placeholder: '¿Cuál es la ocasión?'
 			});
+			$('.relationship-select select').select2({
+				theme: "bootstrap",
+				allowClear: true,
+				placeholder: '¿Quién es la persona a regalar?'
+			});
+			$('.target-select select').select2({
+				theme: "bootstrap",
+				allowClear: true,
+				placeholder: 'Edad'
+			});
+			$('.genre-select select').select2({
+				theme: "bootstrap",
+				allowClear: true,
+				placeholder: 'Género'
+			});
+			$('.interests-select select').multipleSelect();
 			$('.dropdown-toggle').dropdown();

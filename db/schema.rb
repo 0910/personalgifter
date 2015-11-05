@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151030022805) do
+ActiveRecord::Schema.define(version: 20151105205558) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -55,6 +55,48 @@ ActiveRecord::Schema.define(version: 20151030022805) do
   create_table "genres", force: :cascade do |t|
     t.string "name", limit: 255
   end
+
+  create_table "gifter_interests", force: :cascade do |t|
+    t.integer  "gifter_id",   limit: 4
+    t.integer  "interest_id", limit: 4
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "gifter_interests", ["gifter_id"], name: "index_gifter_interests_on_gifter_id", using: :btree
+  add_index "gifter_interests", ["interest_id"], name: "index_gifter_interests_on_interest_id", using: :btree
+
+  create_table "gifters", force: :cascade do |t|
+    t.string   "email",                  limit: 255, default: "", null: false
+    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.string   "name",                   limit: 255
+    t.string   "image",                  limit: 255
+    t.string   "reset_password_token",   limit: 255
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          limit: 4,   default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
+    t.string   "confirmation_token",     limit: 255
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email",      limit: 255
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
+    t.string   "provider",               limit: 255
+    t.string   "uid",                    limit: 255
+    t.integer  "target_id",              limit: 4
+    t.integer  "genre_id",               limit: 4
+  end
+
+  add_index "gifters", ["email"], name: "index_gifters_on_email", unique: true, using: :btree
+  add_index "gifters", ["genre_id"], name: "index_gifters_on_genre_id", using: :btree
+  add_index "gifters", ["provider"], name: "index_gifters_on_provider", using: :btree
+  add_index "gifters", ["reset_password_token"], name: "index_gifters_on_reset_password_token", unique: true, using: :btree
+  add_index "gifters", ["target_id"], name: "index_gifters_on_target_id", using: :btree
+  add_index "gifters", ["uid"], name: "index_gifters_on_uid", using: :btree
 
   create_table "images", force: :cascade do |t|
     t.string   "file_file_name",    limit: 255
@@ -215,12 +257,10 @@ ActiveRecord::Schema.define(version: 20151030022805) do
     t.datetime "updated_at",                                      null: false
     t.string   "provider",               limit: 255
     t.string   "uid",                    limit: 255
-    t.string   "name",                   limit: 255
-    t.string   "image",                  limit: 255
-    t.string   "role",                   limit: 255
     t.string   "location",               limit: 255
     t.integer  "target_id",              limit: 4
     t.integer  "genre_id",               limit: 4
+    t.integer  "role",                   limit: 4
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -234,6 +274,10 @@ ActiveRecord::Schema.define(version: 20151030022805) do
   add_foreign_key "gender_products", "products"
   add_foreign_key "genre_products", "genres"
   add_foreign_key "genre_products", "products"
+  add_foreign_key "gifter_interests", "gifters"
+  add_foreign_key "gifter_interests", "interests"
+  add_foreign_key "gifters", "genres"
+  add_foreign_key "gifters", "targets"
   add_foreign_key "images", "products"
   add_foreign_key "images", "stores"
   add_foreign_key "interest_products", "interests"

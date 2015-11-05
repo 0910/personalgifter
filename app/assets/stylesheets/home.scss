@@ -13,11 +13,16 @@
 	background-image: image-url("splash.jpg");
 	background-position: center center;
 	background-size: cover;
+	.center{
+		width: 1030px;
+	}
 	h1{
 		color:#fff;
-		font-weight: 200;
+		font-weight: 600;
 		font-size: 3em;
 		letter-spacing:-0.038em;
+		text-transform: uppercase;
+		margin-bottom: 5px;
 	}
 	h1 span{
 		font-weight: 300;
@@ -25,26 +30,24 @@
 	p{
 		color: #fff;
 		font-weight: 300;
-		font-size: 1.5em;
-		margin-top:0;
+		font-size: 1.6em;
+		margin:0 0 30px 0;
 	}
-	button{
-		font-size: 1.333em;
-	    font-weight: 400;
-	    margin-top: 1.5em;
-	    border-width: 2px;
-	    background-color: transparent;
-    	border-color: #fff;
+	select{
+    	background-color: transparent;
+    	border:1px solid #fff;
+    	border-radius: 5px;
     	color: #fff;
-    	border-radius: 6px;
-		line-height: 1.33333;
-	}
+    	font-size: 18px;
+    	padding: 15px 30px 15px 15px;
+    }
+
 
 }
 @media (min-width: 768px){
 	.splash{
 		h1{
-			font-size: 5em;
+			font-size:4.25em;
 		}
 	}
 }
