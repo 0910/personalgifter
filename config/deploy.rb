@@ -2,7 +2,7 @@ server '52.33.96.193', roles: [:web, :app, :db], primary: true
 set :domain, "ec2-52-33-96-193.us-west-2.compute.amazonaws.com"
 set :repo_url,        'git@github.com:0910/personalgifter.git'
 set :application,     'personalgifter'
-set :user,            'deploy'
+set :user,            'ubuntu'
 set :rbenv_ruby, '2.2.2'
 
 set :pty,             true
@@ -10,7 +10,7 @@ set :use_sudo,        false
 set :stage,           :production
 set :rails_env,       :production
 set :deploy_via,      :remote_cache
-set :deploy_to,       "/home/deploy/#{fetch(:application)}"
+set :deploy_to,       "/home/ubuntu/#{fetch(:application)}"
 set :ssh_options,     { forward_agent: false, user: fetch(:user), keys: %w(~/.ssh/id_rsa.pub /Users/emadobao/pgifternuevediez.pem) }
 
 set :assets_roles, [:web, :app]            # Defaults to [:web]
