@@ -11,7 +11,7 @@ set :stage,           :production
 set :rails_env,       :production
 set :deploy_via,      :remote_cache
 set :deploy_to,       "/home/deploy/#{fetch(:application)}"
-set :ssh_options,     { forward_agent: true, user: fetch(:user), keys: %w(~/.ssh/id_rsa.pub /Users/emadobao/pgifternuevediez.pem) }
+set :ssh_options,     { forward_agent: false, user: fetch(:user), keys: %w(~/.ssh/id_rsa.pub /Users/emadobao/pgifternuevediez.pem) }
 
 set :assets_roles, [:web, :app]            # Defaults to [:web]
 # Default value for linked_dirs is []
