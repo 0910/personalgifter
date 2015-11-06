@@ -19,7 +19,7 @@ production:
   database: personalgifter_production
   pool: 5
   username: root
-  password: 
+  password: pg.0910.db!
   socket: /var/run/mysqld/mysqld.sock
   port: 3306
 
