@@ -47,14 +47,14 @@
 		.row
 			.container
 				.row
-					- @products.each do |product|
-						.col-sm-3.col-md-3
-							= link_to(product_path(product)) do
-								- if product.images.empty?
+					- @search.search_products.each do |c|
+						.col-xs-6.col-sm-4.col-md-3
+							= link_to(product_path(c.id)) do
+								- if c.images.empty?
 									.square{:style => "background-image: url(image-not-available.jpg)"}
 										.over
 								- else
-									- product.images.each do |image|
+									- c.images.each do |image|
 										- if image.cover == true
 											.square{:style => "background-image: url(#{image.file.url(:large)})"}
 												.over

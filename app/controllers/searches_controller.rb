@@ -3,7 +3,6 @@ class SearchesController < ApplicationController
     @search = Search.new
   end
   def create
-    #puts search_params
     @search = Search.create(search_params)
     redirect_to @search
   end

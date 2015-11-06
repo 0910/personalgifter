@@ -14,7 +14,7 @@
 								= link_to "Conectar con #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider), class: 'btn btn-primary form-control'
 					%hr
 					.form-group
-						= f.label :name, class: 'control-label'
+						= f.label :name, 'Nombre', class: 'control-label'
 						= f.text_field :name, autofocus: true, class: 'form-control'
 					.form-group
 						= f.label :email, class: 'control-label'

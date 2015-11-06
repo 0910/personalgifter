@@ -7,7 +7,7 @@ class Gifter < ActiveRecord::Base
 
   belongs_to :target
   belongs_to :genre
-  has_many :gifter_interests
+  has_many :gifter_interests, :dependent => :destroy
   has_many :interests, :through => :gifter_interests
   
   def self.from_omniauth(auth)

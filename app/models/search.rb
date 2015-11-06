@@ -1,5 +1,5 @@
 class Search < ActiveRecord::Base
-  has_many :interest_searches
+  has_many :interest_searches, :dependent => :destroy
   has_many :interests, :through => :interest_searches
   serialize :interest_id, Array
   def search_products

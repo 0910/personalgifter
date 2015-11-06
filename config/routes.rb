@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   get 'home/index'
 
+
   resources :products, only: [:show, :index] do
   end
   resources :occasions, only: [:show, :index] do
