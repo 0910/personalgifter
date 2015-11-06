@@ -1,5 +1,5 @@
-server '74.208.90.50', roles: [:web, :app, :db], primary: true
-set :domain, "personalgifter.nuevediez.com"
+server '52.33.96.193', roles: [:web, :app, :db], primary: true
+set :domain, "ec2-52-33-96-193.us-west-2.compute.amazonaws.com"
 set :repo_url,        'git@github.com:0910/personalgifter.git'
 set :application,     'personalgifter'
 set :user,            'root'
@@ -10,7 +10,7 @@ set :use_sudo,        false
 set :stage,           :production
 set :rails_env,       :production
 set :deploy_via,      :remote_cache
-set :deploy_to,       "/var/www/applications/#{fetch(:application)}"
+set :deploy_to,       "/home/ubuntu/#{fetch(:application)}"
 set :ssh_options,     { forward_agent: true, user: fetch(:user), keys: %w(~/.ssh/id_rsa.pub) }
 set :assets_roles, [:web, :app]            # Defaults to [:web]
 # Default value for linked_dirs is []
