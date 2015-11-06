@@ -1,6 +1,6 @@
 # set path to application
-app_dir = "/var/www/applications/personalgifter/current"
-shared_dir = "/var/www/applications/personalgifter/shared"
+app_dir = app_dir = "/home/ubuntu/personalgifter/current"
+shared_dir = "/home/ubuntu/personalgifter/shared"
 working_directory app_dir
 
 
