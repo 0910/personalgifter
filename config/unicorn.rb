@@ -1,6 +1,6 @@
 # set path to application
-app_dir = app_dir = "/home/ubuntu/personalgifter/current"
-shared_dir = "/home/ubuntu/personalgifter/shared"
+app_dir = app_dir = "/home/deploy/personalgifter/current"
+shared_dir = "/home/deploy/personalgifter/shared"
 working_directory app_dir
 
 
