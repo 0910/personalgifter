@@ -2,7 +2,7 @@ server '52.33.96.193', roles: [:web, :app, :db], primary: true
 set :domain, "ec2-52-33-96-193.us-west-2.compute.amazonaws.com"
 set :repo_url,        'git@github.com:0910/personalgifter.git'
 set :application,     'personalgifter'
-set :user,            'root'
+set :user,            'deploy'
 set :rbenv_ruby, '2.2.2'
 
 set :pty,             true
