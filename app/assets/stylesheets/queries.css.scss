@@ -1,6 +1,51 @@
+@media (min-width: 768px){
+	.splash{
+		height: 600px;
+		h1{
+			font-size:4.25em;
+		}
+	}
+	section{
+		.container{
+			max-width: 720px;
+		}
+	}
+	.navbar-header{
+		max-width: 25%;
+	}
+	.navbar-brand{
+		padding: 20px 10px;
+		img{
+			width: 100%;
+		}
+	}
+	.group{
+		.item:nth-child(1){
+			padding-right: 7.5px;
+		}
+		.item:nth-child(2){
+			padding-left: 7.5px;
+			padding-right: 15px;
+		}
+		.square{
+			height: 75px;
+		}
+		.ph{
+			height: 160px;
+		}
+		.photo{
+			 height: 100px;
+		}
+	}
+}
 @media (min-width: 1200px){
 	body{
 		font-size: 12px;
+	}
+	section{
+		.container{
+			max-width: 1030px;
+		}
 	}
 	.splash{
 		height: 80vh;
@@ -15,7 +60,19 @@
 			width: 85%;
 		}
 	}
-	.group .item:nth-child(2){
-		margin-left: 7.5px;
+	.group{
+		.item:nth-child(1){
+			padding-right: 7.5px;
+		}
+		.item:nth-child(2){
+			padding-left: 7.5px;
+			padding-right: 7.5px;
+		}
+		.item:nth-child(3){
+			padding-left: 7.5px;
+		}
+		.photo{
+			height: 150px;
+		}
 	}
 }

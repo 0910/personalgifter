@@ -15,6 +15,13 @@ ActiveAdmin.register Search do
     actions
   end
 
+  filter :occasion_id
+  filter :relationship_id
+  filter :target_id
+  filter :genre_id
+  filter :interests
+  filter :user
+
   show do |p|
     attributes_table do
       row :genre_id

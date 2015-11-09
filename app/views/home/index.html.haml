@@ -3,9 +3,11 @@
 		.col-md-12
 			.row
 				%h1 El regalo perfecto para cada ocasión
-				%p
+				%p.visible-lg
 					Completa las siguientes opciones para que Personal Gifter pueda sugerirte un regalo adecuado.
-			.row.home-gifter
+				%button.btn.btn-white.btn-lg.toggle-gifter.hidden-lg
+					REGALAR
+			.row.home-gifter.visible-lg
 				= form_for search do |f|
 					.col-md-12
 						.row.box
@@ -51,7 +53,7 @@
 						.row
 							.col-md-12
 								- @romantic.each do |item|
-									= link_to(product_path(item), class: 'item') do
+									= link_to(product_path(item), class: 'col-xs-4 col-sm-6 col-md-4 item') do
 										- if item.images.empty?
 											.square{:style => "background-image: url(image-not-available.jpg)"}
 												.over
@@ -60,7 +62,7 @@
 												- if image.cover == true
 													.square{:style => "background-image: url(#{image.file.url(:large)})"}
 														.over
-								.item.hidden-sm
+								.item.col-xs-4.col-md-4.hidden-sm
 									.square
 										%h1
 											42
@@ -80,7 +82,7 @@
 						.row
 							.col-md-12
 								- @athletic.each do |item|
-									= link_to(product_path(item), class: 'item') do
+									= link_to(product_path(item), class: 'col-xs-4 col-sm-6 col-md-4 item') do
 										- if item.images.empty?
 											.square{:style => "background-image: url(image-not-available.jpg)"}
 												.over
@@ -89,7 +91,7 @@
 												- if image.cover == true
 													.square{:style => "background-image: url(#{image.file.url(:large)})"}
 														.over
-								.item.hidden-sm
+								.item.col-xs-4.col-md-4.hidden-sm
 									.square
 										%h1
 											36
@@ -109,7 +111,7 @@
 						.row
 							.col-md-12
 								- @elegant.each do |item|
-									= link_to(product_path(item), class: 'item') do
+									= link_to(product_path(item), class: 'col-xs-4 col-sm-6 col-md-4 item') do
 										- if item.images.empty?
 											.square{:style => "background-image: url(image-not-available.jpg)"}
 												.over
@@ -118,7 +120,7 @@
 												- if image.cover == true
 													.square{:style => "background-image: url(#{image.file.url(:large)})"}
 														.over
-								.item.hidden-sm
+								.item.col-xs-4.col-md-4.hidden-sm
 									.square
 										%h1
 											54
@@ -139,11 +141,11 @@
 			.container
 				%ul.slider
 					%li.slide
-						.col-md-4
+						.col-sm-4.col-md-4
 							.group{:style => "border-color: #ccc"}
-								.row
-									.col-md-12
-										- @recomendations.each do |recomendation|
+								- @recomendations.each do |recomendation|
+									.col-xs-6.col-sm-6.col-md-6
+										.row
 											= link_to(product_path(recomendation)) do
 												- if recomendation.images.empty?
 													.photo{:style => "background-image: url(image-not-available.jpg)"}
@@ -153,11 +155,11 @@
 														- if image.cover == true
 															.photo{:style => "background-image: url(#{image.file.url(:large)})"}
 																.over
-						.col-md-4
+						.col-sm-4.col-md-4
 							.group{:style => "border-color: #ccc"}
-								.row
-									.col-md-12
-										- @recomendations.each do |recomendation|
+								- @recomendations.each do |recomendation|
+									.col-xs-6.col-sm-6.col-md-6
+										.row
 											= link_to(product_path(recomendation)) do
 												- if recomendation.images.empty?
 													.photo{:style => "background-image: url(image-not-available.jpg)"}
@@ -167,11 +169,11 @@
 														- if image.cover == true
 															.photo{:style => "background-image: url(#{image.file.url(:large)})"}
 																.over
-						.col-md-4
+						.col-sm-4.col-md-4
 							.group{:style => "border-color: #ccc"}
-								.row
-									.col-md-12
-										- @recomendations.each do |recomendation|
+								- @recomendations.each do |recomendation|
+									.col-xs-6.col-sm-6.col-md-6
+										.row
 											= link_to(product_path(recomendation)) do
 												- if recomendation.images.empty?
 													.photo{:style => "background-image: url(image-not-available.jpg)"}

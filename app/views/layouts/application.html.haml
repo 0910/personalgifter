@@ -84,7 +84,7 @@
 						%li
 							%a.toggle-about(href='#') ¿Cómo Funciona?
 						%li
-							%a Contacto
+							= link_to('Contacto', new_contact_path)
 						%li
 							- if gifter_signed_in?
 								.dropdown
@@ -104,12 +104,12 @@
 		= yield
 		%section.footer
 			.container
-				.col-md-6
+				.col-sm-6.col-md-6
 					%a Home
 					%a.toggle-about About
 					%a Como funciona
 					%a Contacto
-				.col-md-6
+				.col-sm-6.col-md-6
 					%button.btn.btn-default.btn-lg.toggle-gifter.pull-right
 						REGALAR
 		:javascript

@@ -12,6 +12,17 @@ ActiveAdmin.register Product do
     column :user
     actions
   end
+
+  filter :user
+  filter :store
+  filter :occasions
+  filter :relationships
+  filter :interests
+  filter :targets
+  filter :genres
+  filter :name
+  filter :description
+  filter :created_at
   
   show do |p|
     attributes_table do

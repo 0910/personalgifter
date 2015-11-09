@@ -9,8 +9,6 @@ ActiveAdmin.register User do
     selectable_column
     id_column
     column :email
-    column :name
-    column :role
     column :current_sign_in_at
     column :sign_in_count
     column :created_at
@@ -22,15 +20,20 @@ ActiveAdmin.register User do
   filter :sign_in_count
   filter :created_at
 
+  show do |p|
+    attributes_table do
+      row :email
+      row :current_sign_in_at
+      row :sign_in_count
+      row :created_at
+    end
+  end
+
   form do |f|
     f.inputs "Admin Details" do
       f.input :email
-      f.input :name
-      f.input :location
-      f.input :genre
-      f.input :target
-      f.input :role, :as => :select2, :collection => ['admin', 'gifter'], :include_blank => false, :require => true
-      f.input :interests, :as => :select2_multiple, :collection => Interest.all, :include_blank => false, :require => true
+      f.input :password
+      f.input :password_confirmation
     end
     f.actions
   end

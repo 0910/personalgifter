@@ -1,0 +1,25 @@
+%section.title
+	%h1 Contacto
+	%p Envianos un mensaje con tu consulta
+%section.detail
+	.col-md-4.col-md-offset-4
+		= form_for @contact do |f|
+			.row
+				.form-group
+					= f.label :name, 'Nombre', class: 'control-label'
+					= f.text_field :name, :required => false, class: 'form-control'
+			.row
+				.form-group
+					= f.label :name, 'Email', class: 'control-label'
+					= f.email_field :email, :required => false, class: 'form-control'
+
+			.row
+				.form-group
+					= f.label :name, 'Mensaje', class: 'control-label'
+					= f.text_field :message, :as => :text, :required => false, class: 'form-control'
+			.row.hidden
+				.form-group
+					= f.text_field :nickname, :hint => 'Leave this field blank!'
+			.row
+				.form-group
+					= f.submit "ENVIAR MENSAJE", class: 'btn btn-success'

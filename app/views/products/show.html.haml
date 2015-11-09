@@ -1,39 +1,40 @@
 %section.detail
 	.container
-		.row
-			.col-sm-6.col-md-6
-				.row.photos
-					%ul.slider
-						- if @product.images.empty?
-							%li
-								.photo{:style => "background-image: url(image-not-available.jpg)"}
-						- else
-							- @product.images.each do |image|
+		.col-md-12
+			.row
+				.col-sm-6.col-md-6
+					.row.photos
+						%ul.slider
+							- if @product.images.empty?
 								%li
-									.photo{:style => "background-image: url(#{image.file.url(:large)})"}
-			.col-sm-6.col-md-6
-				.row
-					.col-md-12
-						%h1
-							#{@product.name}
-				.row
-					.col-md-12
-						%h3
-							#{@product.store.name}
-				.row
-					.col-md-12
-						%p
-							#{@product.description}
-				%hr
-				.row
-					.col-md-12
-						.row
-							.col-sm-6.col-md-6
-								%h2.pull-right
-									$#{@product.price}
-									%span.line
-							.col-sm-6.col-md-6
-								= link_to('COMPRAR', @product.link, class: 'btn btn-lavander btn-buy', :target => '_blank')
+									.photo{:style => "background-image: url(image-not-available.jpg)"}
+							- else
+								- @product.images.each do |image|
+									%li
+										.photo{:style => "background-image: url(#{image.file.url(:large)})"}
+				.col-sm-6.col-md-6
+					.row
+						.col-md-12
+							%h1
+								#{@product.name}
+					.row
+						.col-md-12
+							%h3
+								#{@product.store.name}
+					.row
+						.col-md-12
+							%p
+								#{@product.description}
+					%hr
+					.row
+						.col-md-12
+							.row
+								.col-sm-6.col-md-6
+									%h2.pull-right
+										$#{@product.price}
+										%span.line
+								.col-sm-6.col-md-6
+									= link_to('COMPRAR', @product.link, class: 'btn btn-lavander btn-buy', :target => '_blank')
 
 									
 				%hr
