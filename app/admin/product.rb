@@ -74,7 +74,7 @@ ActiveAdmin.register Product do
       f.input :genres, :as => :select2_multiple, :collection => Genre.all, :include_blank => false, :require => true
       f.input :occasions, :as => :select2_multiple, :collection => Occasion.all, :include_blank => false, :require => true
       f.input :relationships, :as => :select2_multiple, :collection => Relationship.all, :include_blank => false, :require => true
-      f.input :interests, :as => :select2_multiple, :collection => Interest.all, :include_blank => false, :require => true
+      f.input :interests, :as => :select, :collection => Interest.all, :include_blank => false, :require => true, :multiple => true
       f.input :description, :require => true
       f.input :price
       f.input :link
