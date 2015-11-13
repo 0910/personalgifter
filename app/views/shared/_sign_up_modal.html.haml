@@ -11,7 +11,9 @@
 					.form-group
 						- if devise_mapping.omniauthable?
 							- resource_class.omniauth_providers.each do |provider|
-								= link_to "Conectar con #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider), class: 'btn btn-primary form-control'
+								= link_to omniauth_authorize_path(resource_name, provider), class: 'btn btn-primary form-control' do
+									= icon('facebook')
+									Conectar con #{provider.to_s.titleize}
 					%hr
 					.form-group
 						= f.label :name, 'Nombre', class: 'control-label'

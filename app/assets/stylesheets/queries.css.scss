@@ -10,6 +10,9 @@
 			max-width: 720px;
 		}
 	}
+	#navbar{
+		float: right;
+	}
 	.navbar-header{
 		max-width: 25%;
 	}
@@ -17,6 +20,18 @@
 		padding: 20px 10px;
 		img{
 			width: 100%;
+		}
+	}
+	.navbar-nav{
+		padding:20px 0;
+		li > a{
+			font-size: 1.333em;
+			text-align: left;
+		}
+		li > button{
+			margin: 7.5px 0;
+			font-size: 1.333em;
+			margin-left:15px;
 		}
 	}
 	.group{

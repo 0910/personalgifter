@@ -3,8 +3,9 @@ class ProductsController < ApplicationController
   	@products = Product.all.reverse_order
   end
   def show
-  	@search = Search.new
-  	@products = Product.all.reverse_order
   	@product = Product.find(params[:id])
+  	interest_ids = @product.interest_ids
+  	@products = Product.all
+    @products = @products.distinct.joins(:interest_products).where(:interest_products => {:interest_id => interest_ids}) if interest_ids.present?
   end
 end

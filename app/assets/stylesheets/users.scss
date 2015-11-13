@@ -1,4 +1,4 @@
-.registrations, .contacts{
+.passwords, .sessions, .registrations, .contacts{
 	.navbar{
 		background-color: #2c2a52;
 	}
@@ -42,11 +42,24 @@
 			opacity: 1;
 		}
 	}
+	#error_explanation{
+		background-color: #f2dede;
+		color: #a94442;
+		margin-bottom: 30px;
+		padding:15px;
+		border-radius: 7.5px;
+		h2{
+			font-size: 1.5em;
+			margin-top:0;
+		}
+		li{
+		}
+	}
 }
-.registrations, .contacts{
+.passwords, .sessions, .registrations, .contacts{
 	.title{
 		margin-top: 80px;
-		padding-bottom: 0px;
+		padding-bottom: 30px;
 		p{
 			font-size: 1.6667em;
 			margin: 0;

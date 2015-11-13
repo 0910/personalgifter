@@ -1,9 +1,6 @@
 class User < ActiveRecord::Base
   devise :database_authenticatable, 
-         :recoverable, :rememberable, :trackable, :validatable,
-         :registerable
-
-  enum role: [:author, :editor, :super_admin]
+         :recoverable, :rememberable, :trackable, :validatable
   
   belongs_to :target
   belongs_to :genre
@@ -14,12 +11,12 @@ class User < ActiveRecord::Base
     role == 'admin'
   end
   
-  def gifter?
-    role == 'gifter'
+  def store?
+    role == 'store'
   end
 
   def guest?
-    !admin? && !gifter?
+    !admin? && !store?
   end
   
 end

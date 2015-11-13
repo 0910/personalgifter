@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   def index
     # Get products recomendations
-  	@recomendations = Product.all.limit(4).reverse_order
+  	@recomendations = Product.all.limit(12).reverse_order
 
     # Get topic recomendations
     @romantic = Product.joins(:interest_products).where(:interest_products => {:interest_id => 4}).limit(2).reverse_order

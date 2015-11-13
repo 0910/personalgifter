@@ -18,6 +18,7 @@ section{
 	text-align: left;
 	.ms-choice > span.placeholder {
 	    color: #fff;
+	    text-transform: uppercase;
 	}
     a{
     	color: #fff;
@@ -242,22 +243,23 @@ section{
 		background-color: #fff;
 	}
 }
-.navbar-nav{
-	padding:20px 0;
+.navbar-nav {
+    padding: 20px 30px;
 }
 .navbar-nav > li > a{
 	color: #fff;
-	font-size: 1.333em;
+	font-size: 2em;
+	text-align: center;
 }
 .nav > li > a:hover, .nav > li > a:focus {
     background-color: transparent;
     text-decoration: none;
 }
-.navbar-nav > li > button{
-	margin: 7.5px 0;
-	font-size: 1.333em;
-	padding: 5px 15px;
-	margin-left:15px;
+.navbar-nav > li > button {
+    font-size: 2em;
+    margin: 7.5px 0;
+    padding: 5px 15px;
+    width: 100%;
 }
 .dropdown-menu {
     border: 0px;

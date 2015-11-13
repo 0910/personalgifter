@@ -37,7 +37,6 @@
 									= link_to('COMPRAR', @product.link, class: 'btn btn-lavander btn-buy', :target => '_blank')
 
 									
-				%hr
 %section.recomendations
 	.col-md-12
 		.row.title
@@ -48,7 +47,7 @@
 		.row
 			.container
 				.row
-					- @search.search_products.each do |c|
+					- @products.each do |c|
 						.col-xs-6.col-sm-4.col-md-3
 							= link_to(product_path(c.id)) do
 								- if c.images.empty?

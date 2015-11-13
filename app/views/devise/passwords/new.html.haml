@@ -1,0 +1,22 @@
+%section.title
+  %h1
+    ¿Olvidaste tu contraseña?
+  %p
+    Recuperala ingresando tu email
+
+%section.detail
+  .col-sm-6.col-sm-offset-3.col-md-4.col-md-offset-4
+    = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+      = devise_error_messages!
+      .form-group
+        = f.label :email, class: 'control-label'
+        = f.email_field :email, autofocus: true, class: 'form-control'
+      .form-group
+        = f.submit "Recibir Instrucciones", class: 'btn btn-success form-control'
+      %hr
+      .form-group
+        %p
+          ¿No tienes cuenta?
+          = link_to('Crea una aquí', new_gifter_registration_path)
+
+

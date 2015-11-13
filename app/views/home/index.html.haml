@@ -141,45 +141,18 @@
 			.container
 				%ul.slider
 					%li.slide
-						.col-sm-4.col-md-4
-							.group{:style => "border-color: #ccc"}
-								- @recomendations.each do |recomendation|
-									.col-xs-6.col-sm-6.col-md-6
-										.row
-											= link_to(product_path(recomendation)) do
-												- if recomendation.images.empty?
-													.photo{:style => "background-image: url(image-not-available.jpg)"}
-														.over
-												- else
-													- recomendation.images.each do |image|
-														- if image.cover == true
-															.photo{:style => "background-image: url(#{image.file.url(:large)})"}
-																.over
-						.col-sm-4.col-md-4
-							.group{:style => "border-color: #ccc"}
-								- @recomendations.each do |recomendation|
-									.col-xs-6.col-sm-6.col-md-6
-										.row
-											= link_to(product_path(recomendation)) do
-												- if recomendation.images.empty?
-													.photo{:style => "background-image: url(image-not-available.jpg)"}
-														.over
-												- else
-													- recomendation.images.each do |image|
-														- if image.cover == true
-															.photo{:style => "background-image: url(#{image.file.url(:large)})"}
-																.over
-						.col-sm-4.col-md-4
-							.group{:style => "border-color: #ccc"}
-								- @recomendations.each do |recomendation|
-									.col-xs-6.col-sm-6.col-md-6
-										.row
-											= link_to(product_path(recomendation)) do
-												- if recomendation.images.empty?
-													.photo{:style => "background-image: url(image-not-available.jpg)"}
-														.over
-												- else
-													- recomendation.images.each do |image|
-														- if image.cover == true
-															.photo{:style => "background-image: url(#{image.file.url(:large)})"}
-																.over
+						- @recomendations.in_groups_of(4, false).each do |slide|
+							.col-sm-4.col-md-4
+								.group{:style => "border-color: #ccc"}
+									- slide.each do |recomendation|
+										.col-xs-6.col-sm-6.col-md-6
+											.row
+												= link_to(product_path(recomendation)) do
+													- if recomendation.images.empty?
+														.photo{:style => "background-image: url(image-not-available.jpg)"}
+															.over
+													- else
+														- recomendation.images.each do |image|
+															- if image.cover == true
+																.photo{:style => "background-image: url(#{image.file.url(:large)})"}
+																	.over
