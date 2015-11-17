@@ -1,6 +1,7 @@
 class Product < ActiveRecord::Base
   belongs_to :user
   belongs_to :store
+  belongs_to :category
 
   has_many :occasion_products, :dependent => :destroy
   has_many :occasions, :through => :occasion_products

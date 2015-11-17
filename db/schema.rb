@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151112195925) do
+ActiveRecord::Schema.define(version: 20151117134124) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -27,6 +27,24 @@ ActiveRecord::Schema.define(version: 20151112195925) do
   add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
+
+  create_table "ahoy_events", force: :cascade do |t|
+    t.uuid     "visit_id",   limit: 16
+    t.integer  "user_id",    limit: 4
+    t.string   "name",       limit: 255
+    t.text     "properties", limit: 65535
+    t.datetime "time"
+  end
+
+  add_index "ahoy_events", ["time"], name: "index_ahoy_events_on_time", using: :btree
+  add_index "ahoy_events", ["user_id"], name: "index_ahoy_events_on_user_id", using: :btree
+  add_index "ahoy_events", ["visit_id"], name: "index_ahoy_events_on_visit_id", using: :btree
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "contacts", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -173,11 +191,14 @@ ActiveRecord::Schema.define(version: 20151112195925) do
     t.integer  "occasion_id",     limit: 4
     t.integer  "relationship_id", limit: 4
     t.integer  "interest_id",     limit: 4
-    t.datetime "created_at",                                   null: false
-    t.datetime "updated_at",                                   null: false
+    t.datetime "created_at",                                               null: false
+    t.datetime "updated_at",                                               null: false
     t.integer  "target_id",       limit: 4
+    t.integer  "hits_count",      limit: 4,                    default: 0, null: false
+    t.integer  "category_id",     limit: 4
   end
 
+  add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree
   add_index "products", ["interest_id"], name: "index_products_on_interest_id", using: :btree
   add_index "products", ["occasion_id"], name: "index_products_on_occasion_id", using: :btree
   add_index "products", ["relationship_id"], name: "index_products_on_relationship_id", using: :btree
@@ -279,6 +300,36 @@ ActiveRecord::Schema.define(version: 20151112195925) do
   add_index "users", ["target_id"], name: "index_users_on_target_id", using: :btree
   add_index "users", ["uid"], name: "index_users_on_uid", using: :btree
 
+  create_table "visits", force: :cascade do |t|
+    t.uuid     "visitor_id",       limit: 16
+    t.string   "ip",               limit: 255
+    t.text     "user_agent",       limit: 65535
+    t.text     "referrer",         limit: 65535
+    t.text     "landing_page",     limit: 65535
+    t.integer  "user_id",          limit: 4
+    t.string   "referring_domain", limit: 255
+    t.string   "search_keyword",   limit: 255
+    t.string   "browser",          limit: 255
+    t.string   "os",               limit: 255
+    t.string   "device_type",      limit: 255
+    t.integer  "screen_height",    limit: 4
+    t.integer  "screen_width",     limit: 4
+    t.string   "country",          limit: 255
+    t.string   "region",           limit: 255
+    t.string   "city",             limit: 255
+    t.string   "postal_code",      limit: 255
+    t.decimal  "latitude",                       precision: 10
+    t.decimal  "longitude",                      precision: 10
+    t.string   "utm_source",       limit: 255
+    t.string   "utm_medium",       limit: 255
+    t.string   "utm_term",         limit: 255
+    t.string   "utm_content",      limit: 255
+    t.string   "utm_campaign",     limit: 255
+    t.datetime "started_at"
+  end
+
+  add_index "visits", ["user_id"], name: "index_visits_on_user_id", using: :btree
+
   add_foreign_key "gender_products", "genders"
   add_foreign_key "gender_products", "products"
   add_foreign_key "genre_products", "genres"
@@ -295,6 +346,7 @@ ActiveRecord::Schema.define(version: 20151112195925) do
   add_foreign_key "interest_searches", "searches"
   add_foreign_key "occasion_products", "occasions"
   add_foreign_key "occasion_products", "products"
+  add_foreign_key "products", "categories"
   add_foreign_key "products", "interests"
   add_foreign_key "products", "occasions"
   add_foreign_key "products", "relationships"

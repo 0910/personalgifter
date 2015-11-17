@@ -15,6 +15,7 @@ ActiveAdmin.register Product do
 
   filter :user
   filter :store
+  filter :category
   filter :occasions
   filter :relationships
   filter :interests
@@ -31,6 +32,7 @@ ActiveAdmin.register Product do
       row :price
       row :link
       row :store
+      row :category
       row :genres do 
         product.genres.collect.each do |g|
           g.name
@@ -69,11 +71,12 @@ ActiveAdmin.register Product do
     f.inputs 'Details' do
       f.semantic_errors
       f.input :name, :require => true
-      f.input :store_id, :as => :select2, :collection => Store.all, :include_blank => false, :require => true
-      f.input :targets, :as => :select2_multiple, :collection => Target.all, :include_blank => false, :require => true
-      f.input :genres, :as => :select2_multiple, :collection => Genre.all, :include_blank => false, :require => true
-      f.input :occasions, :as => :select2_multiple, :collection => Occasion.all, :include_blank => false, :require => true
-      f.input :relationships, :as => :select2_multiple, :collection => Relationship.all, :include_blank => false, :require => true
+      f.input :store_id, :as => :select2, :collection => Store.where(:user_id => current_user), :include_blank => false, :require => true
+      f.input :category_id, :as => :select2, :collection => Category.all, :include_blank => false, :require => true
+      f.input :targets, :as => :select, :collection => Target.all, :include_blank => false, :require => true, :multiple => true
+      f.input :genres, :as => :select, :collection => Genre.all, :include_blank => false, :require => true, :multiple => true
+      f.input :occasions, :as => :select, :collection => Occasion.all, :include_blank => false, :require => true, :multiple => true
+      f.input :relationships, :as => :select, :collection => Relationship.all, :include_blank => false, :require => true, :multiple => true
       f.input :interests, :as => :select, :collection => Interest.all, :include_blank => false, :require => true, :multiple => true
       f.input :description, :require => true
       f.input :price

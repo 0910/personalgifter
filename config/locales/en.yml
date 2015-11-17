@@ -1,23 +1,135 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  active_admin:
+    dashboard: Inicio
+    dashboard_welcome:
+      welcome: "Bienvenido a Personal Gifter. Este es el panel de administracion para tus productos y tus tiendas."
+      call_to_action: "Proximamente veras aqui nuevas funcionalidades"
+    view: "View"
+    edit: "Edit"
+    delete: "Borrar"
+    delete_confirmation: "Are you sure you want to delete this?"
+    new_model: "Nuevo %{model}"
+    edit_model: "Editar %{model}"
+    delete_model: "Eliminar %{model}"
+    details: "Detalles de %{model}"
+    cancel: "Cancelar"
+    empty: "Vacio"
+    previous: "Anterior"
+    next: "Siguiente"
+    download: "Descargar:"
+    has_many_new: "Agregar Nuevo %{model}"
+    has_many_delete: "Borrar"
+    has_many_remove: "Eliminar"
+    filters:
+      buttons:
+        filter: "Filtros"
+        clear: "Limpiar Filtros"
+      predicates:
+        contains: "Contiene"
+        equals: "Igual a"
+        starts_with: "Empieza con"
+        ends_with: "Termina con"
+        greater_than: "Mayor a"
+        less_than: "Menor a"
+    search_status:
+      headline: "Scope:"
+      current_filters: "Current filters:"
+      no_current_filters: "None"
+    status_tag:
+      "yes": "Yes"
+      "no": "No"
+    main_content: "Please implement %{model}#main_content to display content."
+    logout: "Cerrar Sesión"
+    powered_by: "Powered by Nueve Diez"
+    sidebars:
+      filters: "Filtrar"
+      search_status: "Busqueda de Status"
+    pagination:
+      empty: "No encontramos %{model}"
+      one: "Mostrando <b>1</b> %{model}"
+      one_page: "Mostrando <b>todos los %{n}</b> %{model}"
+      multiple: "Mostrando %{model} <b>%{from}&nbsp;-&nbsp;%{to}</b> de <b>%{total}</b> en total"
+      multiple_without_total: "Mostrando %{model} <b>%{from}&nbsp;-&nbsp;%{to}</b>"
+      entry:
+        one: "Entrada"
+        other: "Entradas"
+    any: "Any"
+    blank_slate:
+      content: "Aun no has creado %{resource_name}."
+      link: "Crear uno"
+    dropdown_actions:
+      button_label: "Acciones"
+    batch_actions:
+      button_label: "Batch Actions"
+      default_confirmation: "Are you sure you want to do this?"
+      delete_confirmation: "Are you sure you want to delete these %{plural_model}?"
+      succesfully_destroyed:
+        one: "Successfully destroyed 1 %{model}"
+        other: "Successfully destroyed %{count} %{plural_model}"
+      selection_toggle_explanation: "(Toggle Selection)"
+      link: "Create one"
+      action_label: "%{title} Selected"
+      labels:
+        destroy: "Delete"
+    comments:
+      created_at: "Created"
+      resource_type: "Resource Type"
+      author_type: "Author Type"
+      body: "Body"
+      author: "Author"
+      title: "Comment"
+      add: "Add Comment"
+      delete: "Delete Comment"
+      delete_confirmation: "Are you sure you want to delete these comment?"
+      resource: "Resource"
+      no_comments_yet: "No comments yet."
+      author_missing: "Anonymous"
+      title_content: "Comments (%{count})"
+      errors:
+        empty_text: "Comment wasn't saved, text was empty."
+    devise:
+      username:
+        title: "Nombre de usuario"
+      email:
+        title: "Email"
+      subdomain:
+        title: "Subdominio"
+      password:
+        title: "Contraseña"
+      sign_up:
+        title: "Registrarme"
+        submit: "Registrarme"
+      login:
+        title: "Ingresar"
+        remember_me: "Recordarme"
+        submit: "Ingresar"
+      reset_password:
+        title: "Olvidaste tu contraseña?"
+        submit: "Reestablecer mi contraseña"
+      change_password:
+        title: "Cambia tu contraseña"
+        submit: "Cambiar mi contraseña"
+      unlock:
+        title: "Resend unlock instructions"
+        submit: "Resend unlock instructions"
+      resend_confirmation_instructions:
+        title: "Resend confirmation instructions"
+        submit: "Resend confirmation instructions"
+      links:
+        sign_up: "Registrarme"
+        sign_in: "Ingresar"
+        forgot_your_password: "Olvidaste tu contraseña?"
+        sign_in_with_omniauth_provider: "Contectar con %{provider}"
+        resend_unlock_instructions: "Resend unlock instructions"
+        resend_confirmation_instructions: "Resend confirmation instructions"
+    unsupported_browser:
+      headline: "Please note that ActiveAdmin no longer supports Internet Explorer versions 8 or less."
+      recommendation: "We recommend upgrading to the latest <a href=\"http://windows.microsoft.com/ie\">Internet Explorer</a>, <a href=\"https://chrome.google.com/\">Google Chrome</a>, or <a href=\"https://mozilla.org/firefox/\">Firefox</a>."
+      turn_off_compatibility_view: "If you are using IE 9 or later, make sure you <a href=\"http://windows.microsoft.com/en-US/windows7/webpages-look-incorrect-in-Internet-Explorer\">turn off \"Compatibility View\"</a>."
+    access_denied:
+      message: "No estas autorizado a realizar esta acción."
+    index_list:
+      table: "Table"
+      block: "List"
+      grid: "Grid"
+      blog: "Blog"

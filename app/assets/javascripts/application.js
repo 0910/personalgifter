@@ -18,4 +18,5 @@
 //= require magic
 //= require select2
 //= require jquery.multiple.select
+//= require ahoy
 //= require_tree .

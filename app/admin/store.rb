@@ -1,5 +1,8 @@
 ActiveAdmin.register Store do
 
+  before_create do |store|
+    store.user = current_user
+  end
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

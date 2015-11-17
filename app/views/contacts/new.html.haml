@@ -7,16 +7,16 @@
 			.row
 				.form-group
 					= f.label :name, 'Nombre', class: 'control-label'
-					= f.text_field :name, :required => false, class: 'form-control'
+					= f.text_field :name, :required => true, class: 'form-control'
 			.row
 				.form-group
 					= f.label :name, 'Email', class: 'control-label'
-					= f.email_field :email, :required => false, class: 'form-control'
+					= f.email_field :email, :required => true, class: 'form-control'
 
 			.row
 				.form-group
 					= f.label :name, 'Mensaje', class: 'control-label'
-					= f.text_field :message, :as => :text, :required => false, class: 'form-control'
+					= f.text_area(:message, rows: 10, class: 'form-control')
 			.row.hidden
 				.form-group
 					= f.text_field :nickname, :hint => 'Leave this field blank!'

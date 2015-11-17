@@ -130,10 +130,13 @@
 		    height: auto;
 		    line-height: 1.42857;
 		    padding: 0 12px;
-		    height: 50px;
 		    text-align: left;
 		    box-shadow: none;
 		}
+		input.form-control{
+			height: 50px;
+		}
+
 		.ms-choice{
 			border: 2px solid #ddd;
 			color: #606060;

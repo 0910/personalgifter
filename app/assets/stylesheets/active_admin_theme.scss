@@ -172,6 +172,12 @@ form.filter_form{
     h1{
         color: #fff;
     }
+    h1.site_title{
+        padding: 0 30px;
+        img{
+            top: 2px;
+        }
+    }
     ul.tabs{
     	li{
     		display: table-cell;
@@ -198,6 +204,12 @@ form.filter_form{
         li{
             border-left:1px solid rgba(255, 255, 255, 0.5);
         }
+    }
+}
+#current_user{
+    span{
+        padding: 23px 14px;
+        color: #fff;
     }
 }
 

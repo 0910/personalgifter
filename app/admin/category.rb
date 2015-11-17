@@ -1,4 +1,4 @@
-ActiveAdmin.register Contact do
+ActiveAdmin.register Category do
 
 
   # See permitted parameters documentation:

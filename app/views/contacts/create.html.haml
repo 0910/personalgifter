@@ -1,5 +1,7 @@
 %section.title
-	%h1 Mensaje Recibido
+	- flash.each do |key, value|
+		%h1
+			= value 
 	%p Estaremos en contacto contigo lo antes posible
 
 %section.detail

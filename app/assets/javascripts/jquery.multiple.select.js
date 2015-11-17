@@ -539,7 +539,7 @@
     $.fn.multipleSelect.defaults = {
         name: '',
         isOpen: false,
-        placeholder: '¿Qué gustos e intereses tiene?',
+        placeholder: 'Seleccionar',
         selectAll: true,
         selectAllText: 'Seleccionar Todos',
         selectAllDelimiter: ['[', ']'],

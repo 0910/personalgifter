@@ -7,9 +7,10 @@ class Ability
       can :manage, :all
     else 
       if user.store?
-        can :manage, Product, user_id: user.id
-        can :manage, Store, user_id: user.id
-        can :manage, User, id: user.id
+        can :create, Product
+        can [:read, :update, :destroy], Product, user_id: user.id
+        can :create, Store
+        can [:read, :update, :destroy], Store, user_id: user.id
       else
         
       end

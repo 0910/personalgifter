@@ -40,6 +40,8 @@ gem 'activeadmin-select2', github: 'mfairburn/activeadmin-select2'
 gem 'activesupport-json_encoder'
 gem 'omniauth-facebook'
 gem 'mail_form'
+gem 'ahoy_matey'
+gem 'activeuuid', '>= 0.5.0'
 
 
 group :development do
