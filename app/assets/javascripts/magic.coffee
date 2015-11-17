@@ -8,6 +8,7 @@ ready = ->
     else
       # Do things on Nav Open
       $('.about').addClass 'show'
+      $(window).scrollTop(0)
       $('body').css('overflow', 'hidden')
     return
 
@@ -20,6 +21,7 @@ ready = ->
     else
       # Do things on Nav Open
       $('.gifter').addClass 'show'
+      $(window).scrollTop(0)
       $('body').css('overflow', 'hidden')
     return
 

@@ -71,7 +71,7 @@ ActiveAdmin.register Product do
     f.inputs 'Details' do
       f.semantic_errors
       f.input :name, :require => true
-      f.input :store_id, :as => :select2, :collection => Store.where(:user_id => current_user), :include_blank => false, :require => true
+      f.input :store_id, :as => :select2, :collection => Store.all, :include_blank => false, :require => true
       f.input :category_id, :as => :select2, :collection => Category.all, :include_blank => false, :require => true
       f.input :targets, :as => :select, :collection => Target.all, :include_blank => false, :require => true, :multiple => true
       f.input :genres, :as => :select, :collection => Genre.all, :include_blank => false, :require => true, :multiple => true
