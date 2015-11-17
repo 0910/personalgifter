@@ -15,7 +15,7 @@ set :ssh_options,     { forward_agent: false, user: fetch(:user), keys: %w(~/.ss
 
 set :assets_roles, [:web, :app]            # Defaults to [:web]
 # Default value for linked_dirs is []
-set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
+set :linked_dirs, fetch(:linked_dirs, []).push('log', 'shared/pids', 'shared/cache', 'shared/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
 set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml')
 
 set :scm, :git
