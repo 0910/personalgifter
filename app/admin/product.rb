@@ -7,8 +7,8 @@ ActiveAdmin.register Product do
   index do
     column :id
     column :name
-    column :price
-    column :link
+    column :category
+    column :store
     column :user
     actions
   end
