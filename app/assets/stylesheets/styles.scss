@@ -72,6 +72,17 @@ section{
     	font-size: 16px;
     	padding: 15px 30px 15px 15px;
     }
+    button.action{
+    	background-color: #fff;
+	    border: 2px solid #fff;
+	    border-radius: 7px;
+	    color: #606060;
+	    font-size: 16px;
+	    height: 50px;
+	    margin: 0;
+	    padding: 0;
+	    width: 100%;
+    }
     .search-gift-box{
     	margin: 2px;
 	    .search-gift{
@@ -386,7 +397,7 @@ ul.slider{
     color: #2c2a52;
 }
 .navbar-nav > li > a.btn-default, .navbar-nav button.btn-default{
-	padding:5px 15px;
+	padding:4px 15px;
 	margin-top: 8px;
 }
 .navbar-nav > li > a.btn-default:hover, , button.btn-default:hover, .navbar-nav > li > a.btn-default:focus, button.btn-default:focus, .navbar-nav > li > a.btn-default.focus, button.btn-default.focus {
