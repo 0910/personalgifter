@@ -1,5 +1,7 @@
 ActiveAdmin.register Product do
 
+  scope_to :current_user, unless: proc{ current_user.admin? }
+
   before_create do |product|
     product.user = current_user
   end

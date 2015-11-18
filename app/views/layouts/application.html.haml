@@ -104,11 +104,12 @@
 		= yield
 		%section.footer
 			.container
-				.col-sm-12.col-md-12
+				.col-sm-6.col-md-6
 					= link_to('Home', root_path)
 					%a.toggle-about(href='#') ¿Cómo Funciona?
 					= link_to('Contacto', new_contact_path)
-					= link_to('http://www.facebook.com') do
+				.col-sm-6.col-md-6
+					= link_to('http://www.facebook.com', class: 'pull-right') do
 						= icon('facebook-square')
 						Seguinos en Facebook 
 		:javascript

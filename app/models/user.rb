@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   
   belongs_to :target
   belongs_to :genre
+  has_many :products
+  has_many :stores
   has_many :user_interests
   has_many :interests, :through => :user_interests
 
