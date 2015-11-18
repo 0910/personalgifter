@@ -4,6 +4,13 @@ ActiveAdmin.register Store do
     store.user = current_user
   end
 
+  index do
+    column :id
+    column :name
+    column :description
+    column :user
+    actions
+  end
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
