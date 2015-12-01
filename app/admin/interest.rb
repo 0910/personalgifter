@@ -1,5 +1,9 @@
 ActiveAdmin.register Interest do
 
+  action_item only: :show do
+    link_to 'New Interest', new_admin_interest_path
+  end
+
   filter :products
   filter :name
   filter :created_at

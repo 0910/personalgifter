@@ -4,6 +4,10 @@ ActiveAdmin.register Store do
     store.user = current_user
   end
 
+  action_item only: :show do
+    link_to 'New Store', new_admin_store_path
+  end
+
   index do
     column :id
     column :name

@@ -5,6 +5,10 @@ ActiveAdmin.register User do
     UserInterest.where(:user => params[:id]).delete_all
   end
 
+  action_item only: :show do
+    link_to 'New User', new_admin_user_path
+  end
+
   index do
     selectable_column
     id_column

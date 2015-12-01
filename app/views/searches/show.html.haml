@@ -30,9 +30,11 @@
 								- if c.images.empty?
 									.square{:style => "background-image: url(image-not-available.jpg)"}
 										.over
+									%p.prodname #{c.name}
 								- else
 									- c.images.each do |image|
 										- if image.cover == true
 											.square{:style => "background-image: url(#{image.file.url(:large)})"}
 												.over
+											%p.prodname #{c.name}
 

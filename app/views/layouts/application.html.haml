@@ -12,39 +12,6 @@
 	%body{:class => "#{controller_name} #{action_name}"}
 		= render 'shared/sign_up_modal'
 		= render 'shared/login_modal'
-		.gifter
-			.center
-				.col-md-12
-					.row
-						%p
-							Completa las siguientes opciones para que Personal Gifter pueda sugerirte un regalo adecuado.
-					.row
-						= form_for search do |f|
-							.col-md-12
-								.row.box
-									.col-md-3.simple-select.occasion-select
-										.row
-											= f.collection_select :occasion_id, Occasion.all, :id, :name, {include_blank: true}
-									.col-md-4.simple-select.relationship-select
-										.row
-											= f.collection_select :relationship_id, Relationship.all, :id, :name, {include_blank: true}
-									.col-md-3.simple-select.target-select
-										.row
-											= f.collection_select :target_id, Target.all, :id, :name, {include_blank: true}
-									.col-md-2.simple-select.genre-select
-										.row
-											= f.collection_select :genre_id, Genre.all, :id, :name, {include_blank: true}
-								.row.box
-								
-									.col-md-10.interests-select
-										.row	
-											= f.collection_select :interest_ids, Interest.all, :id, :name, {include_blank: false}, {:multiple => true}
-									.col-md-2
-										.row
-											.search-gift-box
-												= f.submit "REGALAR", :class => 'btn-white btn btn-lg search-gift'
-			%a.toggle-gifter
-				= icon('times')
 		.about
 			.center
 				.row.steps
@@ -99,8 +66,9 @@
 							- else
 								= link_to "Iniciar Sesión", "#login", "data-toggle" => "modal", :class => 'btn btn-default'
 						%li
-							%button.btn.btn-white.toggle-gifter
-								REGALAR
+							= link_to('Regalar', new_search_path, class: 'btn btn-white')
+		- flash.each do |name, msg|
+			= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
 		= yield
 		%section.footer
 			.container
@@ -128,12 +96,19 @@
 				allowClear: true,
 				placeholder: 'Edad'
 			});
-			$('.genre-select select').select2({
-				theme: "bootstrap",
-				allowClear: true,
-				placeholder: 'Género'
-			});
+
 			$('.interests-select select').multipleSelect({
 				placeholder: '¿Qué gustos e intereses tiene?'
 			});
+			$('.genre-select select').multipleSelect({
+				placeholder: 'Género'
+			});
 			$('.dropdown-toggle').dropdown();
+
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+			ga('create', 'UA-70398947-1', 'auto');
+			ga('send', 'pageview');

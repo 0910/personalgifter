@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151117134124) do
+ActiveRecord::Schema.define(version: 20151201022145) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -124,6 +124,12 @@ ActiveRecord::Schema.define(version: 20151117134124) do
   add_index "gifters", ["target_id"], name: "index_gifters_on_target_id", using: :btree
   add_index "gifters", ["uid"], name: "index_gifters_on_uid", using: :btree
 
+  create_table "groups", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
   create_table "images", force: :cascade do |t|
     t.string   "file_file_name",    limit: 255
     t.string   "file_content_type", limit: 255
@@ -181,6 +187,16 @@ ActiveRecord::Schema.define(version: 20151117134124) do
     t.datetime "updated_at",             null: false
   end
 
+  create_table "product_groups", force: :cascade do |t|
+    t.integer  "product_id", limit: 4
+    t.integer  "group_id",   limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "product_groups", ["group_id"], name: "index_product_groups_on_group_id", using: :btree
+  add_index "product_groups", ["product_id"], name: "index_product_groups_on_product_id", using: :btree
+
   create_table "products", force: :cascade do |t|
     t.string   "name",            limit: 255
     t.text     "description",     limit: 65535
@@ -226,7 +242,7 @@ ActiveRecord::Schema.define(version: 20151117134124) do
     t.integer  "occasion_id",     limit: 4
     t.integer  "relationship_id", limit: 4
     t.integer  "target_id",       limit: 4
-    t.integer  "genre_id",        limit: 4
+    t.text     "genre_ids",       limit: 65535
     t.text     "interest_ids",    limit: 65535
     t.integer  "user_id",         limit: 4
     t.datetime "created_at",                    null: false
@@ -346,6 +362,8 @@ ActiveRecord::Schema.define(version: 20151117134124) do
   add_foreign_key "interest_searches", "searches"
   add_foreign_key "occasion_products", "occasions"
   add_foreign_key "occasion_products", "products"
+  add_foreign_key "product_groups", "groups"
+  add_foreign_key "product_groups", "products"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "interests"
   add_foreign_key "products", "occasions"

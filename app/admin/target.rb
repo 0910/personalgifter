@@ -1,5 +1,9 @@
 ActiveAdmin.register Target do
 
+  action_item only: :show do
+    link_to 'New Target', new_admin_target_path
+  end
+
   filter :products
   filter :name
 

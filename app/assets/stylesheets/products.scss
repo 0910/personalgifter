@@ -43,9 +43,20 @@
 		}
 	}
 }
+.searches.new{
+	background-color: #2c2a52;
+	.footer{
+		display: none;
+	}
+}
 .searches, .products.index{
 	.title{
 		margin-top: 80px;
+	}
+	.prodname{
+		text-align: center;
+		color: #606060;
+		font-size: 1.250em;
 	}
 }
 .products.show{

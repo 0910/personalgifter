@@ -8,6 +8,7 @@ ready = ->
   $('#product_occasion_ids').multipleSelect();
   $('#product_relationship_ids').multipleSelect();
   $('#product_interest_ids').multipleSelect();
+  $('#group_product_ids').multipleSelect();
 
 $(document).ready(ready);
 $(document).on('page:load', ready);

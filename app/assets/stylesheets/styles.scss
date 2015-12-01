@@ -16,11 +16,45 @@ section{
 .information{
     text-align: center;
 }
+#flash_error{
+    background-color: #f2dede;
+    border-color: #eed3d7;
+    color: #b94a48;
+    text-align: center;
+    padding: 20px 0;
+}
+
+#flash_alert {
+    background-color: #f2dede;
+    border-color: #eed3d7;
+    color: #b94a48;
+    text-align: center;
+    margin-top:91px;
+    padding: 20px 0;
+}
+
+.alert-success {
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #468847;
+    text-align: center; }
+
+#flash_notice {
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #468847;
+    text-align: center;
+    padding: 20px 0;
+}
 
 /* Gifter */
 
 .gifter, .home-gifter{
 	text-align: left;
+	.gifter-inside{
+		width: 75%;
+		margin: 100px auto 0;
+	}
 	.ms-choice > span.placeholder {
 	    color: #fff;
 	    text-transform: uppercase;
@@ -143,15 +177,7 @@ section{
 	}
 }
 .gifter{
-	background-color: rgba(44,42,82,0.99);
-	width: 100%;
-	height: 100%;
-	overflow: hidden;
-	position: absolute;
-	opacity: 0;
-	-webkit-transition: 300ms ease all;
-    transition: 300ms ease all;
-    z-index: -2;
+	
 }
 .gifter.show{
 	opacity: 1;
@@ -406,14 +432,15 @@ ul.slider{
     color: #2c2a52;
     text-decoration: none;
 }
-.btn-white {
+.btn-white, .navbar-nav > li > a.btn-white {
     background-color: #fff;
     border-color: #fff;
     color: #606060;
     margin: 7.5px 0 7.5px 15px;
     line-height: 1.4;
+    padding: 4px 15px;
 }
-.btn-white:hover {
+.btn-white:hover, .navbar-nav > li > a.btn-white:hover {
     background-color: transparent;
     border-color: #fff;
     color: #fff;
@@ -666,4 +693,26 @@ ul.slider{
 }
 .bx-wrapper .bx-pager.bx-default-pager a:hover, .bx-wrapper .bx-pager.bx-default-pager a.active {
     background: #fff;
+}
+@media (min-width: 768px){
+	.gifter{
+		background-color: rgba(44,42,82,0.99);
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+		position: absolute;
+		-webkit-transition: 300ms ease all;
+		transition: 300ms ease all;
+		z-index: -2;
+		.gifter-inside{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin: 0;
+			transform:translate(-50%,-50%);
+			-ms-transform: translate(-50%,-50%); /* IE 9 */
+			-webkit-transform: translate(-50%,-50%); /* Safari */
+			text-align: center;
+		}
+	}
 }
