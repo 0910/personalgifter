@@ -19,4 +19,5 @@
 //= require select2
 //= require jquery.multiple.select
 //= require ahoy
+//= require filterrific/filterrific-jquery
 //= require_tree .

@@ -157,8 +157,6 @@ GEM
     faraday (0.9.2)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.10)
-    filterrific (2.0.5)
-      rails (>= 3.1.0)
     font-awesome-sass (4.4.0)
       sass (>= 3.2)
     formatador (0.2.5)
@@ -418,7 +416,6 @@ DEPENDENCIES
   devise
   factory_girl_rails
   faker
-  filterrific
   font-awesome-sass (~> 4.4.0)
   friendly_id
   geocoder

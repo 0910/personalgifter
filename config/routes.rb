@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get 'home/index'
 
 
-  resources :products, only: [:show, :index] do
+  resources :products, only: [:show] do
   end
   resources :occasions, only: [:show, :index] do
   end

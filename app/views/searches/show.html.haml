@@ -17,6 +17,23 @@
 		%p
 			Las recomendaciones de PG
 	%section
+		= form_for(@search, :url => {:action => 'update', :id => @search.id}) do |f|
+			.container
+				.col-md-12
+					.row.box
+						.col-md-1
+							%p Filtrar por
+						.col-md-2.store-select
+							.row
+								= f.collection_select :store_id, Store.all, :id, :name, {include_blank: true}
+						.col-md-2.category-select
+							.row
+								= f.collection_select :category_id, Category.all, :id, :name, {include_blank: true}
+						.col-md-2.genre-select
+							.row
+								.search-gift-box
+									= f.submit "Filtrar", :class => 'btn'
+	%section
 		.container
 			.row
 				- if @search.search_products.empty?
@@ -37,4 +54,21 @@
 											.square{:style => "background-image: url(#{image.file.url(:large)})"}
 												.over
 											%p.prodname #{c.name}
+:javascript
+	$('.store-select select').select2({
+		theme: "bootstrap",
+		allowClear: true,
+		placeholder: 'Tienda'
+	});
+	$('.category-select select').select2({
+		theme: "bootstrap",
+		allowClear: true,
+		placeholder: 'Tipo de Producto'
+	});
+	$('.order-select select').select2({
+		theme: "bootstrap",
+		allowClear: true,
+		placeholder: 'Ordenar por'
+	});
+
 

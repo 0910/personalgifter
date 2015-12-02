@@ -11,11 +11,16 @@ class SearchesController < ApplicationController
   end
   def update
     @search = Search.find(params[:id])
-    render :show
+    if @search.update_attributes(search_params)
+      redirect_to @search
+    else
+      render 'edit'
+    end
   end
+
 
   private	
   def search_params
-    params.require(:search).permit(:occasion_id, :relationship_id, :genre_id, :target_id, {:interest_ids => []})
+    params.require(:search).permit(:occasion_id, :relationship_id, {:genre_ids => []}, :target_id, {:interest_ids => []}, :category_id, :store_id, :min, :max, :order)
   end
 end

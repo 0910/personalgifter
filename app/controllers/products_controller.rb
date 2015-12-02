@@ -1,7 +1,4 @@
 class ProductsController < ApplicationController
-  def index
-  	@products = Product.all.reverse_order
-  end
   def show
   	@product = Product.find(params[:id])
   	genre_ids = @product.genre_ids

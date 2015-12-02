@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151201022145) do
+ActiveRecord::Schema.define(version: 20151202190227) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -77,6 +77,16 @@ ActiveRecord::Schema.define(version: 20151201022145) do
 
   add_index "genre_products", ["genre_id"], name: "index_genre_products_on_genre_id", using: :btree
   add_index "genre_products", ["product_id"], name: "index_genre_products_on_product_id", using: :btree
+
+  create_table "genre_searches", force: :cascade do |t|
+    t.integer  "genre_id",   limit: 4
+    t.integer  "search_id",  limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "genre_searches", ["genre_id"], name: "index_genre_searches_on_genre_id", using: :btree
+  add_index "genre_searches", ["search_id"], name: "index_genre_searches_on_search_id", using: :btree
 
   create_table "genres", force: :cascade do |t|
     t.string "name", limit: 255
@@ -247,6 +257,11 @@ ActiveRecord::Schema.define(version: 20151201022145) do
     t.integer  "user_id",         limit: 4
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
+    t.integer  "category_id",     limit: 4
+    t.integer  "min",             limit: 4
+    t.integer  "max",             limit: 4
+    t.integer  "store_id",        limit: 4
+    t.string   "order",           limit: 255
   end
 
   create_table "stores", force: :cascade do |t|
@@ -350,6 +365,8 @@ ActiveRecord::Schema.define(version: 20151201022145) do
   add_foreign_key "gender_products", "products"
   add_foreign_key "genre_products", "genres"
   add_foreign_key "genre_products", "products"
+  add_foreign_key "genre_searches", "genres"
+  add_foreign_key "genre_searches", "searches"
   add_foreign_key "gifter_interests", "gifters"
   add_foreign_key "gifter_interests", "interests"
   add_foreign_key "gifters", "genres"
