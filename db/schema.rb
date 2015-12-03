@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151202202027) do
+ActiveRecord::Schema.define(version: 20151203161729) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -42,8 +42,9 @@ ActiveRecord::Schema.define(version: 20151202202027) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.string   "available",  limit: 255, default: "Yes"
   end
 
   create_table "contacts", force: :cascade do |t|
@@ -136,8 +137,9 @@ ActiveRecord::Schema.define(version: 20151202202027) do
 
   create_table "groups", force: :cascade do |t|
     t.string   "name",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.string   "available",  limit: 255, default: "Yes"
   end
 
   create_table "images", force: :cascade do |t|
@@ -178,8 +180,9 @@ ActiveRecord::Schema.define(version: 20151202202027) do
 
   create_table "interests", force: :cascade do |t|
     t.string   "name",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.string   "available",  limit: 255, default: "Yes"
   end
 
   create_table "occasion_products", force: :cascade do |t|
@@ -194,8 +197,9 @@ ActiveRecord::Schema.define(version: 20151202202027) do
 
   create_table "occasions", force: :cascade do |t|
     t.string   "name",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.string   "available",  limit: 255, default: "Yes"
   end
 
   create_table "product_groups", force: :cascade do |t|
@@ -218,11 +222,13 @@ ActiveRecord::Schema.define(version: 20151202202027) do
     t.integer  "occasion_id",     limit: 4
     t.integer  "relationship_id", limit: 4
     t.integer  "interest_id",     limit: 4
-    t.datetime "created_at",                                               null: false
-    t.datetime "updated_at",                                               null: false
+    t.datetime "created_at",                                                   null: false
+    t.datetime "updated_at",                                                   null: false
     t.integer  "target_id",       limit: 4
-    t.integer  "hits_count",      limit: 4,                    default: 0, null: false
+    t.integer  "hits_count",      limit: 4,                    default: 0,     null: false
     t.integer  "category_id",     limit: 4
+    t.string   "available",       limit: 255,                  default: "Yes"
+    t.string   "public_price",    limit: 255
   end
 
   add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree
@@ -245,8 +251,9 @@ ActiveRecord::Schema.define(version: 20151202202027) do
 
   create_table "relationships", force: :cascade do |t|
     t.string   "name",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.string   "available",  limit: 255, default: "Yes"
   end
 
   create_table "searches", force: :cascade do |t|
@@ -271,8 +278,9 @@ ActiveRecord::Schema.define(version: 20151202202027) do
     t.text     "description", limit: 65535
     t.string   "link",        limit: 255
     t.integer  "user_id",     limit: 4
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+    t.string   "available",   limit: 255,   default: "Yes"
   end
 
   add_index "stores", ["user_id"], name: "index_stores_on_user_id", using: :btree
@@ -289,8 +297,9 @@ ActiveRecord::Schema.define(version: 20151202202027) do
 
   create_table "targets", force: :cascade do |t|
     t.string   "name",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.string   "available",  limit: 255, default: "Yes"
   end
 
   create_table "user_interests", force: :cascade do |t|

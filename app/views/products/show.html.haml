@@ -31,7 +31,7 @@
 							.row
 								.col-sm-6.col-md-6
 									%h2.pull-right
-										$#{@product.price}
+										#{@product.public_price}
 										%span.line
 								.col-sm-6.col-md-6
 									= link_to('COMPRAR', @product.link, class: 'btn btn-lavander btn-buy', :target => '_blank')

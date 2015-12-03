@@ -1,5 +1,17 @@
 ActiveAdmin.register Target do
 
+  index do
+    selectable_column
+    column :id
+    column :name
+    column 'Available', :sortable => :available do |resource|
+      column_select(resource, :available, ["Yes", "No"])
+    end
+    column :created_at
+    column :updated_at
+    actions
+  end
+  
   action_item only: :show do
     link_to 'New Target', new_admin_target_path
   end

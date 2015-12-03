@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
   end
   helper_method :search
   
+
   # Create a resource method to access registration via modal from any controller
   def resource_name
     :gifter

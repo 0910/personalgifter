@@ -10,21 +10,21 @@
 						.row.box
 							.col-md-3.simple-select.occasion-select
 								.row
-									= f.collection_select :occasion_id, Occasion.all, :id, :name, {include_blank: true}
+									= f.collection_select :occasion_id, Occasion.where(available: 'Yes'), :id, :name, {include_blank: true}
 							.col-md-4.simple-select.relationship-select
 								.row
-									= f.collection_select :relationship_id, Relationship.all, :id, :name, {include_blank: true}
+									= f.collection_select :relationship_id, Relationship.where(available: 'Yes'), :id, :name, {include_blank: true}
 							.col-md-3.simple-select.target-select
 								.row
-									= f.collection_select :target_id, Target.all, :id, :name, {include_blank: true}
+									= f.collection_select :target_id, Target.where(available: 'Yes'), :id, :name, {include_blank: true}
 							.col-md-2.genre-select
 								.row
-									= f.collection_select :genre_ids, Genre.all, :id, :name, {include_blank: false}, {:multiple => true}
+									= f.collection_select :genre_ids, Genre.where(available: 'Yes'), :id, :name, {include_blank: false}, {:multiple => true}
 						.row.box
 						
 							.col-md-10.interests-select
 								.row	
-									= f.collection_select :interest_ids, Interest.all, :id, :name, {include_blank: false}, {:multiple => true}
+									= f.collection_select :interest_ids, Interest.where(available: 'Yes'), :id, :name, {include_blank: false}, {:multiple => true}
 							.col-md-2.genre-select
 								.row
 									.search-gift-box

@@ -1,5 +1,17 @@
 ActiveAdmin.register Interest do
 
+  index do
+    selectable_column
+    column :id
+    column :name
+    column 'Available', :sortable => :available do |resource|
+      column_select(resource, :available, ["Yes", "No"])
+    end
+    column :created_at
+    column :updated_at
+    actions
+  end
+  
   action_item only: :show do
     link_to 'New Interest', new_admin_interest_path
   end

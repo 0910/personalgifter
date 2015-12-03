@@ -3,12 +3,32 @@
 #= require jquery.multiple.select
 
 ready = ->
-  $('#product_target_ids').multipleSelect();
-  $('#product_genre_ids').multipleSelect();
-  $('#product_occasion_ids').multipleSelect();
-  $('#product_relationship_ids').multipleSelect();
-  $('#product_interest_ids').multipleSelect();
-  $('#group_product_ids').multipleSelect();
+	$('#product_target_ids').multipleSelect();
+	$('#product_genre_ids').multipleSelect();
+	$('#product_occasion_ids').multipleSelect();
+	$('#product_relationship_ids').multipleSelect();
+	$('#product_interest_ids').multipleSelect();
+	$('#group_product_ids').multipleSelect();
+	set_admin_selectable_events()
+
+set_admin_selectable_events = ->
+	$('select.admin-selectable').on 'change', (e) ->
+		path = $(e.currentTarget).attr('data-path')
+		attr = $(e.currentTarget).attr('data-attr')
+		resource_id = $(e.currentTarget).attr('data-resource-id')
+		val = $(e.currentTarget).val()
+		val = $.trim(val)
+		payload = {}
+		resource_class = path.slice(0, -1)
+		payload[resource_class] = {}
+		payload[resource_class][attr] = val
+
+		$.ajax
+			url: '/admin/' + path + '/' + resource_id
+			type: 'PUT'
+			data: payload
+
+	return
+	
 
 $(document).ready(ready);
-$(document).on('page:load', ready);

@@ -9,10 +9,14 @@ ActiveAdmin.register Product do
   end
 
   index do
+    selectable_column
     column :id
     column :name
     column :category
     column :store
+    column 'Available', :sortable => :available do |resource|
+      column_select(resource, :available, ["Yes", "No"])
+    end
     column :user
     actions
   end
@@ -34,6 +38,7 @@ ActiveAdmin.register Product do
       row :name
       row :description
       row :price
+      row :public_price
       row :link
       row :store
       row :category
@@ -84,6 +89,7 @@ ActiveAdmin.register Product do
       f.input :interests, :as => :select, :collection => Interest.all, :include_blank => false, :require => true, :multiple => true
       f.input :description, :require => true
       f.input :price
+      f.input :public_price
       f.input :link
     end
     f.inputs "Images" do

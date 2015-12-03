@@ -5,8 +5,12 @@ ActiveAdmin.register Group do
   end
 
   index do
+    selectable_column
     column :id
     column :name
+    column 'Available', :sortable => :available do |resource|
+      column_select(resource, :available, ["Yes", "No"])
+    end
     column :user
     actions
   end

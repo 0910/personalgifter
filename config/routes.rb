@@ -7,14 +7,16 @@ Rails.application.routes.draw do
   get 'home/index'
 
 
-  resources :products, only: [:show] do
-  end
-  resources :occasions, only: [:show, :index] do
-  end
-  resources :interests, only: [:show, :index] do
-  end
-  resources :relationships, only: [:show, :index] do
-  end
+  resources :products, only: [:show]
+
+  resources :groups, only: [:show]
+  
+  #resources :occasions, only: [:show, :index] do
+  #end
+  #resources :interests, only: [:show, :index] do
+  #end
+  #resources :relationships, only: [:show, :index] do
+  #end
 
   resources :searches
   

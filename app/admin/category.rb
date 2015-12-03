@@ -1,5 +1,20 @@
 ActiveAdmin.register Category do
 
+  index do
+    selectable_column
+    column :id
+    column :name
+    column 'Available', :sortable => :available do |resource|
+      column_select(resource, :available, ["Yes", "No"])
+    end
+    column :created_at
+    column :updated_at
+    actions
+  end
+  
+  action_item only: :show do
+    link_to 'New Category', new_admin_category_path
+  end
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

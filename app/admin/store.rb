@@ -9,9 +9,12 @@ ActiveAdmin.register Store do
   end
 
   index do
+    selectable_column
     column :id
     column :name
-    column :description
+    column 'Available', :sortable => :available do |resource|
+      column_select(resource, :available, ["Yes", "No"])
+    end
     column :user
     actions
   end

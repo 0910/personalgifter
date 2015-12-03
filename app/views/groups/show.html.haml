@@ -1,0 +1,22 @@
+%section.title
+	%h1
+		Ideales Para
+	%p
+		#{@group.name}
+	
+%section
+	.container
+		.row
+			- @group.products.each do |c|
+				.col-xs-6.col-sm-4.col-md-3
+					= link_to(product_path(c.id)) do
+						- if c.images.empty?
+							.square{:style => "background-image: url(image-not-available.jpg)"}
+								.over
+							%p.prodname #{truncate(c.name, :length => 24)}
+						- else
+							- c.images.each do |image|
+								- if image.cover == true
+									.square{:style => "background-image: url(#{image.file.url(:large)})"}
+										.over
+									%p.prodname #{truncate(c.name, :length => 24)}

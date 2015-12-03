@@ -1,13 +1,20 @@
 - if @search.search_products.empty?		
-	%section.title.search-error.col-md-6.col-md-offset-3
-		%h1
-			No hay opciones de regalos que coincidan con tu búsqueda
-		%p
-			— Revisa o complementa los criterios de gustos e intereses de la persona a regalar.
-		%p
-			— Utiliza una búsqueda más genérica.
-		%p
-			— Navega por la sección de recomendaciones de los usuarios para encontrar ideas de productos que puedan inspirarte.
+	%section.title.search-error.col-md-4.col-md-offset-4
+		.row
+			%h1
+				No hay opciones de regalos que coincidan con tu búsqueda
+			%p
+				= icon('check')
+				Revisa o complementa los criterios de gustos e intereses de la persona a regalar.
+			%p
+				= icon('check')
+				Utiliza una búsqueda más genérica.
+			%p
+				= icon('check')
+				Navega por la sección de recomendaciones de los usuarios para encontrar ideas de productos que puedan inspirarte.
+		.row
+			= link_to('Comenzar una nueva búsqueda', new_search_path, class: 'btn btn-lg btn-lavander')
+
 
 
 - else
@@ -16,23 +23,36 @@
 			Resultado de la busqueda
 		%p
 			Las recomendaciones de PG
+		
 	%section
 		= form_for(@search, :url => {:action => 'update', :id => @search.id}) do |f|
 			.container
 				.col-md-12
-					.row.box
+					.row.box.filters
+
 						.col-md-1
-							%p Filtrar por
+							%p Filtrar por:
 						.col-md-2.store-select
-							.row
-								= f.collection_select :store_id, Store.all, :id, :name, {include_blank: true}
+							= f.collection_select :store_id, Store.all, :id, :name, {include_blank: true}
 						.col-md-2.category-select
-							.row
-								= f.collection_select :category_id, Category.all, :id, :name, {include_blank: true}
-						.col-md-2.genre-select
-							.row
-								.search-gift-box
-									= f.submit "Filtrar", :class => 'btn'
+							= f.collection_select :category_id, Category.all, :id, :name, {include_blank: true}
+						.col-md-1.price-select
+							%p Precio:
+						.col-md-1.price-select
+							= f.text_field :min, size: 3, placeholder: 'Mínimo'
+						.col-md-1.price-select
+							= f.text_field :max, size: 3, placeholder: 'Máximo'
+						.col-md-1.filter
+							= f.submit "Filtrar", :class => 'btn'
+									
+						.col-md-1.order-select
+							%p Ordenar:
+							= hidden_field_tag :direction, params[:direction]
+							= hidden_field_tag :sort, params[:sort]
+						.col-md-1.order-select
+							= sortable "name", "Nombre"
+						.col-md-1.order-select
+							= sortable "price", "Precio"
 	%section
 		.container
 			.row
@@ -41,19 +61,19 @@
 						%a.toggle-gifter(href='#') Redefiní tu busqueda
 						para encontar el regalo perfecto.
 				- else
-					- @search.search_products.each do |c|
+					- @search.search_products.order(sort_column + ' ' + sort_direction).each do |c|
 						.col-xs-6.col-sm-4.col-md-3
 							= link_to(product_path(c.id)) do
 								- if c.images.empty?
 									.square{:style => "background-image: url(image-not-available.jpg)"}
 										.over
-									%p.prodname #{c.name}
+									%p.prodname #{truncate(c.name, :length => 24)}
 								- else
 									- c.images.each do |image|
 										- if image.cover == true
 											.square{:style => "background-image: url(#{image.file.url(:large)})"}
 												.over
-											%p.prodname #{c.name}
+											%p.prodname #{truncate(c.name, :length => 24)}
 :javascript
 	$('.store-select select').select2({
 		theme: "bootstrap",
