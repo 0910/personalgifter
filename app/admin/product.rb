@@ -1,5 +1,7 @@
 ActiveAdmin.register Product do
 
+  csv_importable :columns => [:name, :description, :public_price, :link]
+
   before_create do |product|
     product.user = current_user
   end
@@ -80,13 +82,13 @@ ActiveAdmin.register Product do
     f.inputs 'Details' do
       f.semantic_errors
       f.input :name, :require => true
-      f.input :store_id, :as => :select2, :collection => Store.all, :include_blank => false, :require => true
-      f.input :category_id, :as => :select2, :collection => Category.all, :include_blank => false, :require => true
-      f.input :targets, :as => :select, :collection => Target.all, :include_blank => false, :require => true, :multiple => true
+      f.input :store_id, :as => :select2, :collection => Store.where(available: 'Yes'), :include_blank => false, :require => true
+      f.input :category_id, :as => :select2, :collection => Category.where(available: 'Yes'), :include_blank => false, :require => true
+      f.input :targets, :as => :select, :collection => Target.where(available: 'Yes'), :include_blank => false, :require => true, :multiple => true
       f.input :genres, :as => :select, :collection => Genre.all, :include_blank => false, :require => true, :multiple => true
-      f.input :occasions, :as => :select, :collection => Occasion.all, :include_blank => false, :require => true, :multiple => true
-      f.input :relationships, :as => :select, :collection => Relationship.all, :include_blank => false, :require => true, :multiple => true
-      f.input :interests, :as => :select, :collection => Interest.all, :include_blank => false, :require => true, :multiple => true
+      f.input :occasions, :as => :select, :collection => Occasion.where(available: 'Yes'), :include_blank => false, :require => true, :multiple => true
+      f.input :relationships, :as => :select, :collection => Relationship.where(available: 'Yes'), :include_blank => false, :require => true, :multiple => true
+      f.input :interests, :as => :select, :collection => Interest.where(available: 'Yes'), :include_blank => false, :require => true, :multiple => true
       f.input :description, :require => true
       f.input :price
       f.input :public_price
