@@ -5,8 +5,7 @@
 				%h1 El regalo perfecto para cada ocasión
 				%p.visible-lg
 					Completa las siguientes opciones para que Personal Gifter pueda sugerirte un regalo adecuado.
-				%button.btn.btn-white.btn-lg.toggle-gifter.hidden-lg
-					REGALAR
+				= link_to('REGALAR', new_search_path, class: 'btn btn-white btn-lg hidden-lg')
 			.row.home-gifter.visible-lg
 				= form_for search do |f|
 					.col-md-12
