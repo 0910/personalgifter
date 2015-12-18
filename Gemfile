@@ -43,6 +43,7 @@ gem 'mail_form'
 gem 'ahoy_matey'
 gem 'activeuuid', '>= 0.5.0'
 gem 'active_admin_csv_import'
+gem 'meta-tags'
 
 
 group :development do

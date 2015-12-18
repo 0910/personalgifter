@@ -224,6 +224,8 @@ GEM
     mail_form (1.5.1)
       actionmailer (>= 3.2, < 5)
       activemodel (>= 3.2, < 5)
+    meta-tags (2.1.0)
+      actionpack (>= 3.0.0)
     method_source (0.8.2)
     mime-types (2.6.2)
     mimemagic (0.3.0)
@@ -427,6 +429,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   mail_form
+  meta-tags
   morrisjs-rails
   mysql2 (~> 0.3.13)
   omniauth-facebook
