@@ -3,7 +3,7 @@
 		- @splashes.each do |splash|
 			%li
 				- splash.images.each do |image|
-					.splash{:style => "background-image: url(#{image.file.url(:large)})"}
+					.splash{:style => "background-image: url(#{image.file.url(:high)})"}
 						.center.splash-text
 							.col-md-12
 								.row
