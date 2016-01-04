@@ -69,8 +69,8 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {
-    address: "just74.justhost.com",
-    port: 465,
+    address: "smtp.gmail.com",
+    port: 587,
     domain: ENV["EMAIL_DOMAIN"],
     authentication: "plain",
     enable_starttls_auto: true,
