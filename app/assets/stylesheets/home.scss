@@ -16,6 +16,8 @@
 	background-image: image-url("splash.jpg");
 	background-position: center center;
 	background-size: cover;
+}
+header{
 	.center{
 		width: 85%;
 		max-width: 1030px;
@@ -50,6 +52,11 @@
 	.home{
 		.navbar{
 			background-color: transparent;
+		}
+		.splash{
+			.center.splash-text{
+				margin-top: -50px;
+			}
 		}
 	}
 }

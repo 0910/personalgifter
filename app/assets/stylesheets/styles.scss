@@ -274,8 +274,9 @@ section{
 .navbar-brand{
 	margin: 10px;
     padding: 10px;
+    width: 220px;
 	img{
-		width: 70%;
+		width: 80%;
 	}
 }
 .navbar-toggle{
@@ -644,7 +645,7 @@ ul.slider{
     padding: 4px;
 }
 .bx-wrapper .bx-controls-direction a{
-    line-height: 1.1;
+    line-height: 18px;
 }
 .bx-wrapper{
     margin: 0;
@@ -661,7 +662,7 @@ ul.slider{
     list-style: none;
 }
 .bx-wrapper .bx-pager, .bx-wrapper .bx-controls-auto{
-    bottom: 3em;
+    bottom: 60px;
 }
 .bx-wrapper .bx-controls-direction a {
     z-index: 1000;
@@ -695,6 +696,9 @@ ul.slider{
     background: #fff;
 }
 @media (min-width: 768px){
+	.navbar-brand{
+		width: auto;
+	}
 	.gifter{
 		background-color: rgba(44,42,82,0.99);
 		width: 100%;

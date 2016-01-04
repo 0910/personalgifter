@@ -15,5 +15,6 @@ class HomeController < ApplicationController
     @relationships = Relationship.where(available: 'Yes')
     @genres = Genre.where(available: 'Yes')
     @targets = Target.where(available: 'Yes')
+    @splashes = Splash.where(available: 'Yes')
   end
 end

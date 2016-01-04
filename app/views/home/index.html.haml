@@ -1,37 +1,44 @@
-.splash
+%header
+	%ul.slider
+		- @splashes.each do |splash|
+			%li
+				- splash.images.each do |image|
+					.splash{:style => "background-image: url(#{image.file.url(:large)})"}
+						.center.splash-text
+							.col-md-12
+								.row
+									%h1
+										#{splash.title}
+									%p.visible-lg
+										Completa las siguientes opciones para que Personal Gifter pueda sugerirte un regalo adecuado.
+									= link_to('REGALAR', new_search_path, class: 'btn btn-white btn-lg hidden-lg')
 	.center
-		.col-md-12
-			.row
-				%h1 El regalo perfecto para cada ocasión
-				%p.visible-lg
-					Completa las siguientes opciones para que Personal Gifter pueda sugerirte un regalo adecuado.
-				= link_to('REGALAR', new_search_path, class: 'btn btn-white btn-lg hidden-lg')
-			.row.home-gifter.visible-lg
-				= form_for search do |f|
-					.col-md-12
-						.row.box
-							.col-md-3.simple-select.occasion-select
-								.row
-									= f.collection_select :occasion_id, Occasion.where(available: 'Yes'), :id, :name, {include_blank: true}
-							.col-md-4.simple-select.relationship-select
-								.row
-									= f.collection_select :relationship_id, Relationship.where(available: 'Yes'), :id, :name, {include_blank: true}
-							.col-md-3.simple-select.target-select
-								.row
-									= f.collection_select :target_id, Target.where(available: 'Yes'), :id, :name, {include_blank: true}
-							.col-md-2.genre-select
-								.row
-									= f.collection_select :genre_ids, Genre.all, :id, :name, {include_blank: false}, {:multiple => true}
-						.row.box
-						
-							.col-md-10.interests-select
-								.row	
-									= f.collection_select :interest_ids, Interest.where(available: 'Yes'), :id, :name, {include_blank: false}, {:multiple => true}
-							.col-md-2
-								.row
-									.search-gift-box
-										%button.btn.btn-white.btn-lg.action
-											REGALAR
+		.row.home-gifter.visible-lg
+			= form_for search do |f|
+				.col-md-12
+					.row.box
+						.col-md-3.simple-select.occasion-select
+							.row
+								= f.collection_select :occasion_id, Occasion.where(available: 'Yes'), :id, :name, {include_blank: true}
+						.col-md-4.simple-select.relationship-select
+							.row
+								= f.collection_select :relationship_id, Relationship.where(available: 'Yes'), :id, :name, {include_blank: true}
+						.col-md-3.simple-select.target-select
+							.row
+								= f.collection_select :target_id, Target.where(available: 'Yes'), :id, :name, {include_blank: true}
+						.col-md-2.genre-select
+							.row
+								= f.collection_select :genre_ids, Genre.all, :id, :name, {include_blank: false}, {:multiple => true}
+					.row.box
+					
+						.col-md-10.interests-select
+							.row	
+								= f.collection_select :interest_ids, Interest.where(available: 'Yes'), :id, :name, {include_blank: false}, {:multiple => true}
+						.col-md-2
+							.row
+								.search-gift-box
+									%button.btn.btn-white.btn-lg.action
+										REGALAR
 %section.title
 	%h1
 		Recomendados
@@ -100,3 +107,14 @@
 															- if image.cover == true
 																.photo{:style => "background-image: url(#{image.file.url(:large)})"}
 																	.over
+:javascript
+	$(function() {
+		$('header .slider').bxSlider({
+			auto: true,
+			pause: 5000,
+			useCSS:true,
+			easing: 'cubic-bezier(.74,.14,.44,.71)',
+				nextText: '→',
+				prevText: '←'
+		});
+	});
