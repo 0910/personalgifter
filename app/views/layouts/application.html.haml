@@ -7,7 +7,7 @@
 			= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
 			= javascript_include_tag 'application', 'data-turbolinks-track' => true
 			= csrf_meta_tags
-			- set_meta_tags title: 'Personal Gifter. El regalo perfecto para cada ocasión', description: 'Buscar un regalo puede ser agotador. ¿Qué le compro? ¿le gustará? ¿lo usará? Personal Gifter te ofrece sugerencias a medida para regalar.', keywords: 'regalos, regalar, navidad, amigo invisible', og: { title:'Personal Gifter. El regalo perfecto para cada ocasión', type:'website', url:'http://www.personalgifter.com', image:'http://www.personalgifter.com/public/fbsplash.jpg', description: 'Buscar un regalo puede ser agotador. ¿Qué le compro? ¿le gustará? ¿lo usará? Personal Gifter te ofrece sugerencias a medida para regalar.' }
+			- set_meta_tags title: 'Personal Gifter. El regalo perfecto para cada ocasión', description: 'Buscar un regalo puede ser agotador. ¿Qué le compro? ¿le gustará? ¿lo usará? Personal Gifter te ofrece sugerencias a medida para regalar.', keywords: 'regalos, regalar, navidad, amigo invisible', og: { title:'Personal Gifter. El regalo perfecto para cada ocasión', type:'website', url:'http://www.personalgifter.com', image: image_tag('fbsplash.jpg'), description: 'Buscar un regalo puede ser agotador. ¿Qué le compro? ¿le gustará? ¿lo usará? Personal Gifter te ofrece sugerencias a medida para regalar.' }
 			= display_meta_tags
 			= yield(:head)
 
@@ -68,7 +68,7 @@
 							- else
 								= link_to "Iniciar Sesión", "#login", "data-toggle" => "modal", :class => 'btn btn-default'
 						%li#regalar
-							= link_to('Regalar', new_search_path, class: 'btn btn-white')
+							= link_to('Buscar', new_search_path, class: 'btn btn-white')
 		- flash.each do |name, msg|
 			= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
 		= yield

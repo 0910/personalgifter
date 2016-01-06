@@ -74,6 +74,7 @@
 											.square{:style => "background-image: url(#{image.file.url(:large)})"}
 												.over
 											%p.prodname #{truncate(c.name, :length => 24)}
+											%p.prodname #{c.public_price}
 :javascript
 	$('.store-select select').select2({
 		theme: "bootstrap",
