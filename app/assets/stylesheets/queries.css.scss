@@ -1,8 +1,8 @@
 @media (min-width: 768px){
 	.splash{
-		height: 600px;
+		height: 720px;
 		h1{
-			font-size:4.25em;
+			font-size:3.75em;
 		}
 	}
 	section{
@@ -63,7 +63,7 @@
 		}
 	}
 	.splash{
-		height: 80vh;
+		height: calc(100vh - 83px);
 	}
 	.container{
 		width: 1030px;
