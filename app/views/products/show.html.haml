@@ -34,7 +34,7 @@
 										#{@product.public_price}
 										%span.line
 								.col-sm-6.col-md-6
-									= link_to('COMPRAR', @product.link, class: 'btn btn-lavander btn-buy', :target => '_blank')
+									= link_to('VER PRODUCTO EN LA TIENDA', @product.link, class: 'btn btn-lavander btn-buy', :target => '_blank', :onclick => "trackOutboundLink('#{@product.link}'); return false;")
 
 									
 %section.recomendations

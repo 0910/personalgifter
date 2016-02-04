@@ -23,8 +23,8 @@ ActiveAdmin.register Product do
     actions
   end
 
-  filter :user
-  filter :store
+  filter :user, :if => proc { current_user.admin? }
+  filter :store, :if => proc { current_user.admin? }
   filter :category
   filter :occasions
   filter :relationships
@@ -82,7 +82,7 @@ ActiveAdmin.register Product do
     f.inputs 'Details' do
       f.semantic_errors
       f.input :name, :require => true
-      f.input :store_id, :as => :select2, :collection => Store.where(available: 'Yes'), :include_blank => false, :require => true
+      f.input :store_id, :as => :select2, :collection => Store.where(available: 'Yes', user_id: current_user), :include_blank => false, :require => true
       f.input :category_id, :as => :select2, :collection => Category.where(available: 'Yes'), :include_blank => false, :require => true
       f.input :targets, :as => :select, :collection => Target.where(available: 'Yes'), :include_blank => false, :require => true, :multiple => true
       f.input :genres, :as => :select, :collection => Genre.all, :include_blank => false, :require => true, :multiple => true
