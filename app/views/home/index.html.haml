@@ -81,32 +81,6 @@
 							.row	
 								.col-md-12
 									= link_to('Descubrir Más', group_path(group) , class: 'discover')
-%section.recomendations
-	.col-md-12
-		.row.title
-			%h1
-				Los elegidos
-			%p
-				de los usuarios
-		.row
-			.container
-				%ul.slider
-					%li.slide
-						- @recomendations.in_groups_of(4, false).each do |slide|
-							.col-sm-4.col-md-4
-								.group{:style => "border-color: #ccc"}
-									- slide.each do |recomendation|
-										.col-xs-6.col-sm-6.col-md-6
-											.row
-												= link_to(product_path(recomendation)) do
-													- if recomendation.images.empty?
-														.photo{:style => "background-image: url(image-not-available.jpg)"}
-															.over
-													- else
-														- recomendation.images.each do |image|
-															- if image.cover == true
-																.photo{:style => "background-image: url(#{image.file.url(:large)})"}
-																	.over
 :javascript
 	$(function() {
 		$('header .slider').bxSlider({
