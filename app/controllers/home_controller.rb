@@ -24,7 +24,7 @@ class HomeController < ApplicationController
       og: {
         title:'Personal Gifter. El regalo perfecto para cada ocasión',
         type:'website', url:'http://www.personalgifter.com',
-        image: image_url('fbsplash.jpg'),
+        image: ActionController::Base.helpers.asset_path('fbsplash.jpg'),
         description: 'Buscar un regalo puede ser agotador. ¿Qué le compro? ¿le gustará? ¿lo usará? Personal Gifter te ofrece sugerencias a medida para regalar.' 
       }
     )

@@ -12,8 +12,8 @@ class ProductsController < ApplicationController
       keywords: 'regalos, regalar, navidad, amigo invisible',
       og: {
         title: @product.name,
-        type:'website', url:'http://www.personalgifter.com',
-        image: @product.image.url(:large),
+        type:'website', url:product_url(@product),
+        image: @product.images.first.file.url(:large),
         description: @product.description
       }
     )
