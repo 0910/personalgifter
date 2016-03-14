@@ -6,5 +6,16 @@ class ProductsController < ApplicationController
   	@products = Product.all
     @products = @products.distinct.joins(:genre_products).where(:genre_products => {:genre_id => genre_ids}) if genre_ids.present?
     @products = @products.distinct.joins(:interest_products).where(:interest_products => {:interest_id => interest_ids}) if interest_ids.present?
+  	set_meta_tags(
+      title: @product.name,
+      description: @product.description,
+      keywords: 'regalos, regalar, navidad, amigo invisible',
+      og: {
+        title: @product.name,
+        type:'website', url:'http://www.personalgifter.com',
+        image: @product.image.url(:large),
+        description: @product.description
+      }
+    )
   end
 end
