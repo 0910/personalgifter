@@ -2,10 +2,6 @@ ActiveAdmin.register Product do
 
   csv_importable :columns => [:name, :description, :public_price, :link]
 
-  before_create do |product|
-    product.user = current_user
-  end
-
   action_item only: :show do
     link_to 'New Product', new_admin_product_path
   end
@@ -86,6 +82,11 @@ ActiveAdmin.register Product do
         f.input :store_id, :as => :select2, :collection => Store.where(available: 'Yes'), :include_blank => false, :require => true
       else
         f.input :store_id, :as => :select2, :collection => Store.where(available: 'Yes', user_id: current_user), :include_blank => false, :require => true
+      end
+      if current_user.admin?
+        f.input :user, :as => :select2, :collection => User.all, :include_blank => false, :require => true
+      else
+        f.input :user, :as => :select2, :collection => User.where(id: current_user), :include_blank => false, :require => true
       end
       f.input :category_id, :as => :select2, :collection => Category.all, :include_blank => false, :require => true
       f.input :targets, :as => :select, :collection => Target.all, :include_blank => false, :require => true, :multiple => true
