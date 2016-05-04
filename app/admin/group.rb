@@ -26,6 +26,7 @@ ActiveAdmin.register Group do
           g.name
         end
       end
+      row :description
       row :user
       p.images.each do |image|
         row :image do
@@ -40,6 +41,7 @@ ActiveAdmin.register Group do
       f.semantic_errors
       f.input :name, :require => true
       f.input :products, :as => :select, :collection => Product.all, :include_blank => false, :require => true, :multiple => true
+      f.input :description
     end
     f.inputs "Images" do
       f.has_many :images do |i|

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160104144327) do
+ActiveRecord::Schema.define(version: 20160504172136) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -136,10 +136,11 @@ ActiveRecord::Schema.define(version: 20160104144327) do
   add_index "gifters", ["uid"], name: "index_gifters_on_uid", using: :btree
 
   create_table "groups", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
-    t.string   "available",  limit: 255, default: "Yes"
+    t.string   "name",        limit: 255
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+    t.string   "available",   limit: 255,   default: "Yes"
+    t.text     "description", limit: 65535
   end
 
   create_table "images", force: :cascade do |t|
